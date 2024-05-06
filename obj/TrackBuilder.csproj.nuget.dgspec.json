@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\RallyBaneTest.csproj": {}
+    "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\TrackBuilder.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\RallyBaneTest.csproj": {
+    "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\TrackBuilder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\RallyBaneTest.csproj",
-        "projectName": "RallyBaneTest",
-        "projectPath": "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\RallyBaneTest.csproj",
+        "projectUniqueName": "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\TrackBuilder.csproj",
+        "projectName": "TrackBuilder",
+        "projectPath": "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\TrackBuilder.csproj",
         "packagesPath": "C:\\Users\\Minik\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\obj\\",
         "projectStyle": "PackageReference",
