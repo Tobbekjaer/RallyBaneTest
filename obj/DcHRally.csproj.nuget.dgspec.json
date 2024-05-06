@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\DcHRally.csproj": {}
+    "C:\\Users\\Minik\\source\\repos\\DcHRally\\DcHRally.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\DcHRally.csproj": {
+    "C:\\Users\\Minik\\source\\repos\\DcHRally\\DcHRally.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\DcHRally.csproj",
+        "projectUniqueName": "C:\\Users\\Minik\\source\\repos\\DcHRally\\DcHRally.csproj",
         "projectName": "DcHRally",
-        "projectPath": "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\DcHRally.csproj",
+        "projectPath": "C:\\Users\\Minik\\source\\repos\\DcHRally\\DcHRally.csproj",
         "packagesPath": "C:\\Users\\Minik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\obj\\",
+        "outputPath": "C:\\Users\\Minik\\source\\repos\\DcHRally\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Minik\\AppData\\Roaming\\NuGet\\NuGet.Config",
