@@ -1,0 +1,146 @@
+﻿@* Functionality: Color of categories, Track builder background (auto adjust), Signs/images match  *@
+
+@model RallyBaneTest.ViewModels.ObstacleViewModel
+@{
+    ViewData["Title"] = "Track Builder";
+    Layout = "_Layout";
+}
+<div class="row">
+    <!-- Left Section: List of obstacles/signs -->
+    <div class="col-md-4">
+        <h2>Skilte</h2>
+        <div id="signs">
+            @if (Model != null && Model.Obstacles != null)
+            {
+                // Display images for category 1
+                var categoryOneObstacles = Model.Obstacles.Where(o => o.Category.CategoryId == 1);
+                foreach (var obstacle in categoryOneObstacles)
+                {
+                    <div class="obstacle-container text-center mx-2">
+                        <img src="~/images/signs/@(obstacle.ObstacleId).png" alt="@obstacle.Name" draggable="true" class="obstacle-image" />
+                        <div class="obstacle-name">@obstacle.Name</div>
+                    </div>
+                }
+                
+                // Display accordion for other categories
+                var remainingCategories = Model.Obstacles.Where(o => o.Category.CategoryId != 1).GroupBy(o => o.Category);
+                foreach (var group in remainingCategories)
+                {
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse@(group.Key.Name)" aria-expanded="false" aria-controls="collapse@(group.Key.Name)">
+                                @group.Key.Name
+                            </button>
+                        </h2>
+                        <div id="collapse@(group.Key.Name)" class="accordion-collapse collapse" aria-labelledby="heading@(group.Key.Name)">
+                            <div class="accordion-body obstacle-accordion-body">
+                                @foreach (var obstacle in group)
+                                {
+                                    <div class="obstacle-container text-center mx-2">
+                                        <img src="~/images/signs/@(obstacle.ObstacleId).png" alt="@obstacle.Name" draggable="true" class="obstacle-image" />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <!-- Center Section: Track builder -->
+    <div class="col-md-7">
+        <h2>Banebyggeren</h2>
+        <div id="container"></div>
+    </div>
+
+    <!-- Right Section: Buttons -->
+    <div class="col-md-1">
+        <h2>Info</h2>
+        <button class="right-section-button" id="display-regulations">Reglement</button>
+        <button class="right-section-button" id="save-track">Gem Bane</button>
+        <button class="right-section-button" id="search-import-tracks">Hent bane</button>
+    </div>
+</div>
+
+@section scripts {
+    <!-- Scripts for Konva.js and other JavaScript functionality -->
+    <script src="https://unpkg.com/konva@9.3.6/konva.min.js"></script>
+    <script src="~/js/track.js"></script>
+    <script src="~/js/obstacle.js"></script>
+
+    <style>
+        .obstacle-container {
+            display: inline-block;
+            width: 75px;
+            height: 75px;
+            margin-right: 2px;
+            position: relative;
+        }
+
+        .obstacle-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .right-section-button {
+            display: block;
+            width: 100%;
+            margin-bottom: 2px;
+            border: none;
+            border-radius: 2px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .right-section-button:hover {
+            background-color: #0056b3;
+        }
+
+        .accordion-button {
+            cursor: pointer;
+            padding: 4px 8px;
+            margin-bottom: 2px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .accordion-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .accordion-collapse {
+            padding: 4px;
+            margin-top: 2px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        .accordion-body {
+            padding: 4px;
+        }
+
+        .obstacle-accordion-body {
+            max-height: 300px; 
+            overflow-y: auto; 
+        }
+
+        .obstacle-tooltip {
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 9999; 
+            pointer-events: none; 
+        }
+    </style>
+}
