@@ -63,6 +63,16 @@ stage.container().addEventListener('drop', function(e) {
         var newWidth = 40 / aspectRatio;
         image.width(newWidth);
         image.height(40);
+        image.offsetX(image.width() / 2);
+        image.offsetY(image.height() / 2);
+        image.dragBoundFunc(function (pos) {
+            var newX = Math.max(stage.x() + image.width() / 2, Math.min(stage.x() + stage.width() - image.width() / 2, pos.x));
+            var newY = Math.max(stage.y() + image.height() / 2, Math.min(stage.y() + stage.height() - image.height() / 2, pos.y));
+            return {
+                x: newX,
+                y: newY
+            }
+        });
 
         // Set position and make draggable
         image.position(pointerPos);

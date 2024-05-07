@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DcHRally")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+508f04f1a08db2a2f1ab45ba4fcda317cd483032")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+160afc53cbd0680a2f416fec42269ef89a0213a8")]
 [assembly: System.Reflection.AssemblyProductAttribute("DcHRally")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DcHRally")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
