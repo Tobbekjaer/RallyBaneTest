@@ -75,14 +75,8 @@
     <script src="~/js/track.js"></script>
     <script src="~/js/obstacle.js"></script>
 
-    <style>        
-        .container {
-            flex-grow: inherit;
-            margin: 1px;
-            padding: 1px;
-            overflow: hidden;
-            background-color: #f0f0f0;
-        }
+    <style>         
+     
         .obstacle-container {
             display: inline-block;
             width: 75px;
@@ -157,7 +151,8 @@
         }
 
         #trackContainer {
-            flex-grow:inherit;            
+            width:auto;
+            /* border: 1px solid black; */
         }
 
         #sign-sequence {
@@ -171,17 +166,15 @@
             row-gap: 2px;
             overflow-x:scroll;
         }
-
-            .table tr td:nth-child(even) {
-                background-color: lightgray;
-                border: 1px solid black;
-            }
-
-            /* Apply background colors to odd columns */
-            .table tr td:nth-child(odd) {
-                background-color: darkgray;
-                border: 1px solid black;
-                align-content: center;               
+        
+        .table tr td:nth-child(even) {
+            background-color: lightgray;
+            border: 1px solid black;
+        }
+        
+        .table tr td:nth-child(odd) {
+            background-color: darkgray;
+            border: 1px solid black;
             }
 
     </style>
