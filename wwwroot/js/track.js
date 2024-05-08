@@ -1,7 +1,9 @@
 // Create Konva stage and layer
-
 var sceneWidth = 948 * 2;
 var sceneHeight = 632 * 2;
+
+var idCount = 0;
+var signSequence = [];
 
 var stage = new Konva.Stage({
     container: 'trackContainer', // ID of the container <div>
@@ -40,6 +42,7 @@ backgroundImage.onload = function() {
         height: sceneHeight,        
     });
     imageLayer.add(background);
+    background.moveToBottom();
     imageLayer.draw();
 };
 
@@ -59,78 +62,17 @@ document.querySelectorAll('.obstacle-image').forEach(function(image) {
 stage.container().addEventListener('dragover', function(e) {
     e.preventDefault();
 });
-
-var idCount = 0;
-var signSequence = [];
 // Handle dropping inside the container
 stage.container().addEventListener('drop', function(e) {
     e.preventDefault();
     // Get the dropped image source from drag data
-    var itemURL = e.dataTransfer.getData('text/plain');
+    let itemURL = e.dataTransfer.getData('text/plain');
 
     // We find pointer position by registering it manually
     stage.setPointersPositions(e);
     
     // Create Konva image from dropped URL
-    Konva.Image.fromURL(itemURL, function (image) {
-        image.width(sceneWidth / 10);
-        image.height(sceneHeight / 10);
-        image.offsetX(image.width() / 2);
-        image.offsetY(image.height() / 2);
-        image.dragBoundFunc(function (pos) {
-            var newX = Math.max(stage.x() + image.width() / 4, Math.min(stage.x() + stage.width() - image.width() / 4, pos.x));
-            var newY = Math.max(stage.y() + image.height() / 4, Math.min(stage.y() + stage.height() - image.height() / 4, pos.y));
-            return {
-                x: newX,
-                y: newY
-            }
-        });
-        image.position(stage.getPointerPosition());
-        image.draggable(true);
-        image.id(idCount);
-        idCount++;
-        signSequence.push(image);
-        updateSignSequenceTable();
-
-        // Add image to layer
-        imageLayer.add(image);
-
-        // Attach Transformer to the image with rotation only
-        var transformer = new Konva.Transformer({
-            enabledAnchors: ['rotate'], // Enable only the rotate anchor
-            rotateAnchorOffset: 40, // Set rotation handle position
-        });
-        imageLayer.add(transformer);
-        transformer.nodes([image]);
-
-        // Batch draw to update the stage
-        imageLayer.batchDraw();
-
-        // Event listener to show/hide Transformer when image is clicked
-        image.on('click', function(evt) {
-            var isSelected = transformer.nodes().includes(image);
-            transformer.nodes(isSelected ? [] : [image]); // Toggle selection
-            imageLayer.batchDraw();
-            evt.cancelBubble = true;
-        });
-
-        // Event listener to clear selection when clicking away from the selected image or stage
-        stage.on('click', function(evt) {
-            // Check if the clicked target is not the image or stage
-            if (evt.target === stage || !image.isAncestorOf(evt.target)) {
-                transformer.nodes([]); // Clear selection for all images
-                imageLayer.batchDraw();
-            }
-        });
-
-        // Event listener to destroy the image on double tap
-        image.on('dblclick dbltap', function() {
-            transformer.destroy();
-            this.destroy();
-            text.text('');
-            imageLayer.batchDraw();
-        });
-    });
+    createSign(itemURL, stage.getPointerPosition(), 0);
 });
 
 // ARROW FUNCTIONALITY //
@@ -156,7 +98,7 @@ stage.on('dblclick dbltap', function() {
         points: [0, 0, 60, 0], // Set points relative to arrow's logical position // [pos.x, pos.y, pos.x + 60, pos.y]
     });
     var tr = new Konva.Transformer({
-        enabledAnchors: ['rotate'], // Enable only the rotate anchor
+        enabledAnchors: ['top-center'], // Enable only the rotate anchor
         rotateAnchorOffset: 40, // Set rotation handle position
     });
     imageLayer.add(tr);
@@ -184,7 +126,6 @@ stage.on('dblclick dbltap', function() {
     arrow.on('dblclick dbltap', function() {
         tr.destroy();
         this.destroy();
-        text.text('');
         imageLayer.batchDraw();
     });
 
@@ -192,6 +133,7 @@ stage.on('dblclick dbltap', function() {
     imageLayer.batchDraw();
 });
 
+// ---- SEQUENCE TABLE ----
 function updateSignSequenceTable() {
     var table = document.getElementById("sign-sequence").getElementsByTagName('table')[0];
     table.innerHTML = "";
@@ -203,4 +145,151 @@ function updateSignSequenceTable() {
         var cell = row.insertCell(i); // Insert cells horizontally
         cell.innerHTML = " " + (i + 1) + ": Skilt: " + signId + " ";
     }
+}
+
+function clearSequenceTable() {
+    var table = document.getElementById("sign-sequence").getElementsByTagName('table')[0];
+    table.innerHTML = "";
+}
+
+// ---- CREATE Sign ----
+function createSign(itemURL, posistion, rotation) {
+    Konva.Image.fromURL(itemURL, function (image) {
+        image.name("Sign");
+        image.width(sceneWidth / 10);
+        image.height(sceneHeight / 10);
+        image.offsetX(image.width() / 2);
+        image.offsetY(image.height() / 2);
+        image.dragBoundFunc(function (pos) {
+            var newX = Math.max(stage.x() + image.width() / 4, Math.min(stage.x() + stage.width() - image.width() / 4, pos.x));
+            var newY = Math.max(stage.y() + image.height() / 4, Math.min(stage.y() + stage.height() - image.height() / 4, pos.y));
+            return {
+                x: newX,
+                y: newY
+            }
+        });
+        image.position(posistion);
+        image.rotation(rotation);
+        image.draggable(true);
+        image.id(idCount);
+        idCount++;
+        signSequence.push(image);
+        updateSignSequenceTable();
+
+        // Add image to layer
+        imageLayer.add(image);
+
+        // Attach Transformer to the image with rotation only
+        var transformer = new Konva.Transformer({
+            centeredScaling: true,
+            rotationSnaps: [0, 90, 180, 270],
+            resizeEnabled: false,
+        });
+        imageLayer.add(transformer);
+        transformer.nodes([image]);
+
+      
+
+        // Event listener to show/hide Transformer when image is clicked
+        image.on('click', function (evt) {
+            var isSelected = transformer.nodes().includes(image);
+            transformer.nodes(isSelected ? [] : [image]); // Toggle selection
+            imageLayer.batchDraw();
+            evt.cancelBubble = true;
+        });
+
+        // Event listener to clear selection when clicking away from the selected image or stage
+        stage.on('click', function (evt) {
+            // Check if the clicked target is not the image or stage
+            if (evt.target === stage || !image.isAncestorOf(evt.target)) {
+                transformer.nodes([]); // Clear selection for all images
+                imageLayer.batchDraw();
+            }
+        });
+
+        // Event listener to destroy the image on double tap
+        image.on('dblclick dbltap', function () {
+            transformer.destroy();
+            this.destroy();
+            imageLayer.batchDraw();
+        });
+        // Batch draw to update the stage
+        imageLayer.batchDraw();
+    });
+}
+
+// ---- CLEAR ----
+function clearStage() {
+    idCount = 0;
+    signSequence = [];
+    var children = imageLayer.children;
+    for (var i = children.length - 1; i >= 0; i--) {
+        var child = children[i];
+        if (child.name() === 'Sign' || child.getClassName() == 'Transformer') {
+            child.destroy();
+        }
+    }
+    clearSequenceTable();
+}
+
+// ---- SAVE ----
+function saveToJSON() {
+    var konvaData = [];
+
+    var children = imageLayer.children;
+    for (var i = 0; i < children.length; i++) {
+        if (children[i].name() === 'Sign') {
+            var shape = children[i];
+
+            var data = {
+                id: shape.id(),
+                height: shape.height(),
+                rotation: shape.rotation(),
+                stroke: shape.stroke(),
+                strokeWidth: shape.strokeWidth(),
+                offsetX: shape.offsetX(),
+                offsetY: shape.offsetY(),
+                x: shape.x(),
+                y: shape.y(),
+                src: shape.attrs.image.src,
+                draggable: 'true',
+            };
+
+            konvaData.push(data);
+        }
+    }
+
+    var jsonData = JSON.stringify(konvaData, null, 2);
+
+    var blob = new Blob([jsonData], { type: "application/json" });
+
+    var a = document.createElement('a');
+    a.download = 'konva_data.json';
+    a.href = window.URL.createObjectURL(blob);
+    a.click();
+}
+
+// ---- LOAD ----
+function loadFromJSON(jsonData) {
+    clearStage();
+    var jsonArray = JSON.parse(jsonData);
+    idCount = jsonArray.length;
+    jsonArray.forEach(obj => {
+        let itemURL = obj.src;
+        let position = {
+            x: obj.x,
+            y: obj.y
+        };
+        let rotation = obj.rotation;
+        let sign = createSign(itemURL, position, rotation);
+    });
+}
+function handleFileInputChange(event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function (event) {
+        var jsonData = event.target.result;
+        loadFromJSON(jsonData);
+    };
+    reader.readAsText(file);
 }

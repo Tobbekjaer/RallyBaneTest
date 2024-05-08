@@ -63,8 +63,13 @@
     <div class="col-md-1">
         <h2>Info</h2>
         <button class="right-section-button" id="display-regulations">Reglement</button>
-        <button class="right-section-button" id="save-track">Gem Bane</button>
-        <button class="right-section-button" id="search-import-tracks">Hent bane</button>
+        <button class="right-section-button" id="save-track" onclick="saveToJSON()" >Gem Bane</button>
+        @* <button class="right-section-button" id="search-import-tracks" onclick="loadFromJSON()">Hent bane</button> *@
+        <label for="fileInput" class="custom-file-upload">
+            <span>Hent bane fra fil:</span>
+            <button type="button" onclick="document.getElementById('fileInput').click()">Choose File</button>
+            <input type="file" id="fileInput" onchange="handleFileInputChange(event)" style="display: none;">
+        </label>
     </div>
 </div>
 
@@ -152,7 +157,6 @@
 
         #trackContainer {
             width:auto;
-            /* border: 1px solid black; */
         }
 
         #sign-sequence {
