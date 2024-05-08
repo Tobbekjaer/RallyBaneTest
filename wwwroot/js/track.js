@@ -1,10 +1,10 @@
 // Create Konva stage and layer
-var stage = new Konva.Stage({
-    container: 'container', // ID of the container <div>
-    width: 650,
-    height: 430,
-});
 
+var stage = new Konva.Stage({
+    container: 'trackContainer', // ID of the container <div>
+    width: window.innerWidth / 3,
+    height: window.innerHeight / 3,
+});
 // IMAGE FUNCTIONALITY //
 
 var imageLayer = new Konva.Layer();
@@ -45,6 +45,8 @@ stage.container().addEventListener('dragover', function(e) {
     e.preventDefault();
 });
 
+var idCount = 0;
+var signSequence = [];
 // Handle dropping inside the container
 stage.container().addEventListener('drop', function(e) {
     e.preventDefault();
@@ -55,10 +57,9 @@ stage.container().addEventListener('drop', function(e) {
     // We find pointer position by registering it manually
     stage.setPointersPositions(e);
     var pointerPos = stage.getPointerPosition();
-
+    
     // Create Konva image from dropped URL
     Konva.Image.fromURL(itemURL, function(image) {
-        // Set height to 40px and maintain aspect ratio
         var aspectRatio = image.image().height / image.image().width;
         var newWidth = 40 / aspectRatio;
         image.width(newWidth);
@@ -73,21 +74,23 @@ stage.container().addEventListener('drop', function(e) {
                 y: newY
             }
         });
-
-        // Set position and make draggable
         image.position(pointerPos);
         image.draggable(true);
+        image.id(idCount);
+        idCount++;
+        signSequence.push(image);
+        updateSignSequenceTable();
 
         // Add image to layer
         imageLayer.add(image);
 
         // Attach Transformer to the image with rotation only
-        var tr = new Konva.Transformer({
+        var transformer = new Konva.Transformer({
             enabledAnchors: ['rotate'], // Enable only the rotate anchor
             rotateAnchorOffset: 40, // Set rotation handle position
         });
-        imageLayer.add(tr);
-        tr.nodes([image]);
+        imageLayer.add(transformer);
+        transformer.nodes([image]);
 
         // Update text on drop
         updateText(pointerPos, image);
@@ -97,8 +100,8 @@ stage.container().addEventListener('drop', function(e) {
 
         // Event listener to show/hide Transformer when image is clicked
         image.on('click', function(evt) {
-            var isSelected = tr.nodes().includes(image);
-            tr.nodes(isSelected ? [] : [image]); // Toggle selection
+            var isSelected = transformer.nodes().includes(image);
+            transformer.nodes(isSelected ? [] : [image]); // Toggle selection
             imageLayer.batchDraw();
             evt.cancelBubble = true;
         });
@@ -107,7 +110,7 @@ stage.container().addEventListener('drop', function(e) {
         stage.on('click', function(evt) {
             // Check if the clicked target is not the image or stage
             if (evt.target === stage || !image.isAncestorOf(evt.target)) {
-                tr.nodes([]); // Clear selection for all images
+                transformer.nodes([]); // Clear selection for all images
                 imageLayer.batchDraw();
             }
         });
@@ -124,7 +127,7 @@ stage.container().addEventListener('drop', function(e) {
 
         // Event listener to destroy the image on double tap
         image.on('dblclick dbltap', function() {
-            tr.destroy();
+            transformer.destroy();
             this.destroy();
             text.text('');
             imageLayer.batchDraw();
@@ -212,4 +215,17 @@ function updateText(position, obj) {
     ];
     text.text(lines.join('\n'));
     imageLayer.batchDraw();
+}
+
+function updateSignSequenceTable() {
+    var table = document.getElementById("sign-sequence").getElementsByTagName('table')[0];
+    table.innerHTML = "";
+    var row = table.insertRow(0); // Insert a single row
+    for (var i = 0; i < signSequence.length; i++) {
+        let path = signSequence[i].attrs.image.src;
+        let filename = path.substring(path.lastIndexOf("/") + 1);
+        let signId = filename.match(/\d+/)[0];
+        var cell = row.insertCell(i); // Insert cells horizontally
+        cell.innerHTML = " " + (i + 1) + ": Skilt: " + signId + " ";
+    }
 }

@@ -51,7 +51,12 @@
     <!-- Center Section: Track builder -->
     <div class="col-md-7">
         <h2>Banebyggeren</h2>
-        <div id="container"></div>
+        <div id="trackContainer"></div>
+        <h6>Rækkefølge:</h6>
+        <div class="table" id="sign-sequence">
+            <table>                
+            </table>
+        </div>
     </div>
 
     <!-- Right Section: Buttons -->
@@ -63,13 +68,21 @@
     </div>
 </div>
 
+
 @section scripts {
     <!-- Scripts for Konva.js and other JavaScript functionality -->
     <script src="https://unpkg.com/konva@9.3.6/konva.min.js"></script>
     <script src="~/js/track.js"></script>
     <script src="~/js/obstacle.js"></script>
 
-    <style>
+    <style>        
+        .container {
+            flex-grow: inherit;
+            margin: 1px;
+            padding: 1px;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
         .obstacle-container {
             display: inline-block;
             width: 75px;
@@ -142,5 +155,34 @@
             z-index: 9999; 
             pointer-events: none; 
         }
+
+        #trackContainer {
+            flex-grow:inherit;            
+        }
+
+        #sign-sequence {
+            height: 10vh;
+            flex-grow: inherit;
+            position: relative;
+            border: 1px solid black;
+            padding-top: 20px;
+        }
+        .table {
+            row-gap: 2px;
+            overflow-x:scroll;
+        }
+
+            .table tr td:nth-child(even) {
+                background-color: lightgray;
+                border: 1px solid black;
+            }
+
+            /* Apply background colors to odd columns */
+            .table tr td:nth-child(odd) {
+                background-color: darkgray;
+                border: 1px solid black;
+                align-content: center;               
+            }
+
     </style>
 }
