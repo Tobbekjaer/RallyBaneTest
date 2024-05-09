@@ -70,9 +70,14 @@ stage.container().addEventListener('drop', function(e) {
 
     // We find pointer position by registering it manually
     stage.setPointersPositions(e);
+    let position = stage.getPointerPosition();
+    let positionScaled = {
+        x: position.x / stage.scaleX(),
+        y: position.y / stage.scaleY()
+    };
     
     // Create Konva image from dropped URL
-    createSign(itemURL, stage.getPointerPosition(), 0);
+    createSign(itemURL, positionScaled, 0);
 });
 
 // ARROW FUNCTIONALITY //
@@ -153,7 +158,7 @@ function clearSequenceTable() {
 }
 
 // ---- CREATE Sign ----
-function createSign(itemURL, posistion, rotation) {
+function createSign(itemURL, position, rotation) {
     Konva.Image.fromURL(itemURL, function (image) {
         image.name("Sign");
         image.width(sceneWidth / 10);
@@ -168,7 +173,7 @@ function createSign(itemURL, posistion, rotation) {
                 y: newY
             }
         });
-        image.position(posistion);
+        image.position(position);
         image.rotation(rotation);
         image.draggable(true);
         image.id(idCount);
