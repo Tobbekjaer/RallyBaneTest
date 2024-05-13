@@ -1069,6 +1069,10 @@
       "PackagePath": "staticwebassets\\images\\text\\9.txt"
     },
     {
+      "Id": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\images\\text\\Names.txt",
+      "PackagePath": "staticwebassets\\images\\text\\Names.txt"
+    },
+    {
       "Id": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\js\\obstacle.js",
       "PackagePath": "staticwebassets\\js\\obstacle.js"
     },

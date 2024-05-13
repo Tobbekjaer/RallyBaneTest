@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mm7RraEODu5hX7fm+BvUU5WkpoE4QxV85WIN/Y2PvN0=",
+  "Hash": "6Hba2I+VRQrp+/bW1Wdb2RPYlep36NswAUuezHRY8sQ=",
   "Source": "DcHRally",
   "BasePath": "_content/DcHRally",
   "Mode": "Default",
@@ -5107,6 +5107,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\text\\9.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\images\\text\\Names.txt",
+      "SourceId": "DcHRally",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\",
+      "BasePath": "_content/DcHRally",
+      "RelativePath": "images/text/Names.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\text\\Names.txt"
     },
     {
       "Identity": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\js\\obstacle.js",
