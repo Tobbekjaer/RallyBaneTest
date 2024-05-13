@@ -2,7 +2,6 @@
 var sceneWidth = 948 * 2;
 var sceneHeight = 632 * 2;
 
-var idCount = 0;
 var signSequence = [];
 
 var stage = new Konva.Stage({
@@ -78,6 +77,7 @@ stage.container().addEventListener('drop', function(e) {
     
     // Create Konva image from dropped URL
     createSign(itemURL, positionScaled, 0);
+    
 });
 
 // ARROW FUNCTIONALITY //
@@ -143,10 +143,8 @@ function updateSignSequenceTable() {
     var table = document.getElementById("sign-sequence").getElementsByTagName('table')[0];
     table.innerHTML = "";
     var row = table.insertRow(0); // Insert a single row
-    for (var i = 0; i < signSequence.length; i++) {
-        let path = signSequence[i].attrs.image.src;
-        let filename = path.substring(path.lastIndexOf("/") + 1);
-        let signId = filename.match(/\d+/)[0];
+    for (var i = 0; i < signSequence.length; i++) {        
+        let signId = signSequence[i].id();
         var cell = row.insertCell(i); // Insert cells horizontally
         cell.innerHTML = " " + (i + 1) + ": Skilt: " + signId + " ";
     }
@@ -159,10 +157,31 @@ function clearSequenceTable() {
 
 // ---- CREATE Sign ----
 function createSign(itemURL, position, rotation) {
+    // Check if there's already a sign at the dropped position
+    var existingSign = signSequence.find(function (sign) {
+        var signX = sign.x() - sign.width() / 2;
+        var signY = sign.y() - sign.height() / 2;
+        var signWidth = sign.width();
+        var signHeight = sign.height();
+
+        return position.x >= signX && position.x <= signX + signWidth &&
+            position.y >= signY && position.y <= signY + signHeight;
+    });
+
+    if (existingSign) {
+        position = existingSign.position();
+        rotation = existingSign.rotation();
+        getSignTransformer(existingSign).destroy();
+        existingSign.destroy();
+        var index = signSequence.indexOf(existingSign);
+        signSequence.splice(index, 1);
+    }
+
     Konva.Image.fromURL(itemURL, function (image) {
         image.name("Sign");
         image.width(sceneWidth / 10);
         image.height(sceneHeight / 10);
+        image.stroke('black');
         image.offsetX(image.width() / 2);
         image.offsetY(image.height() / 2);
         image.dragBoundFunc(function (pos) {
@@ -176,8 +195,9 @@ function createSign(itemURL, position, rotation) {
         image.position(position);
         image.rotation(rotation);
         image.draggable(true);
-        image.id(idCount);
-        idCount++;
+        let filename = itemURL.substring(itemURL.lastIndexOf("/") + 1);
+        let signId = filename.match(/\d+/)[0]
+        image.id(signId);
         signSequence.push(image);
         updateSignSequenceTable();
 
@@ -214,18 +234,35 @@ function createSign(itemURL, position, rotation) {
 
         // Event listener to destroy the image on double tap
         image.on('dblclick dbltap', function () {
-            transformer.destroy();
-            this.destroy();
-            imageLayer.batchDraw();
+            deleteSign(this);
         });
+
         // Batch draw to update the stage
         imageLayer.batchDraw();
     });
 }
 
+function deleteSign(sign) {
+    getSignTransformer(sign).destroy();
+    let signPlace = signSequence.indexOf(sign);
+    if (signPlace !== -1) {
+        signSequence.splice(signPlace, 1); // Remove the image from the signSequence array
+        updateSignSequenceTable();
+    }
+    sign.destroy();
+    imageLayer.batchDraw();
+}
+
+function getSignTransformer(sign) {
+    var transformer = imageLayer.find('Transformer').filter(function (tr) {
+        return tr.nodes()[0] === sign;
+    })[0];
+
+    return transformer;
+}
+
 // ---- CLEAR ----
 function clearStage() {
-    idCount = 0;
     signSequence = [];
     var children = imageLayer.children;
     for (var i = children.length - 1; i >= 0; i--) {
