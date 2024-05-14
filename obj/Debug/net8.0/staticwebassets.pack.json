@@ -17,6 +17,26 @@
       "PackagePath": "staticwebassets\\images\\RallyBane.png"
     },
     {
+      "Id": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\images\\obstacleElements\\Bom.png",
+      "PackagePath": "staticwebassets\\images\\obstacleElements\\Bom.png"
+    },
+    {
+      "Id": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\images\\obstacleElements\\Bum.png",
+      "PackagePath": "staticwebassets\\images\\obstacleElements\\Bum.png"
+    },
+    {
+      "Id": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\images\\obstacleElements\\Kegle.png",
+      "PackagePath": "staticwebassets\\images\\obstacleElements\\Kegle.png"
+    },
+    {
+      "Id": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\images\\obstacleElements\\Spand.png",
+      "PackagePath": "staticwebassets\\images\\obstacleElements\\Spand.png"
+    },
+    {
+      "Id": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\images\\obstacleElements\\Tunnel.png",
+      "PackagePath": "staticwebassets\\images\\obstacleElements\\Tunnel.png"
+    },
+    {
       "Id": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\images\\signs\\0.png",
       "PackagePath": "staticwebassets\\images\\signs\\0.png"
     },

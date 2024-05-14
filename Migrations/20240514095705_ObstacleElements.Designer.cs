@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RallyBaneTest.Models;
 
@@ -10,9 +11,11 @@ using RallyBaneTest.Models;
 namespace RallyBaneTest.Migrations
 {
     [DbContext(typeof(RallyDbContext))]
-    partial class RallyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240514095705_ObstacleElements")]
+    partial class ObstacleElements
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

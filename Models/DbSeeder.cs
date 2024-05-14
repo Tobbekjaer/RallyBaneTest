@@ -66,6 +66,23 @@ namespace DcHRally.Models
 
                 _context.SaveChanges();
             }
+            if (!_context.ObstacleElements.Any())
+            {
+                var obstacleElementsPath = Path.Combine(_hostingEnvironment.ContentRootPath, "wwwroot", "images", "obstacleElements");
+                var obstacleElementFiles = Directory.GetFiles(obstacleElementsPath);
+
+                foreach (var obstacleElementFile in obstacleElementFiles)
+                {
+                    var obstacleElement = new ObstacleElement
+                    {
+                        Name = Path.GetFileNameWithoutExtension(obstacleElementFile),
+                    };
+
+                    _context.ObstacleElements.Add(obstacleElement);
+                }
+
+                _context.SaveChanges();
+            }
         }
     }
 }
