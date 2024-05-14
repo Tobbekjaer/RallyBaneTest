@@ -17,7 +17,7 @@
                 foreach (var obstacle in categoryOneObstacles)
                 {
                     <div class="obstacle-container text-center mx-2">
-                        <img src="~/images/signs/@(obstacle.ObstacleId).png" alt="@obstacle.Name" draggable="true" class="obstacle-image" />
+                        <img src="~/images/signs/@(obstacle.ObstacleId).png" title="@($"{obstacle.Name}\n{obstacle.Description}")" draggable="true" class="obstacle-image" />
                         <div class="obstacle-name">@obstacle.Name</div>
                     </div>
                 }
@@ -37,7 +37,8 @@
                                 @foreach (var obstacle in group)
                                 {
                                     <div class="obstacle-container text-center mx-2">
-                                        <img src="~/images/signs/@(obstacle.ObstacleId).png" alt="@obstacle.Name" draggable="true" class="obstacle-image" />
+                                        <span class="obstacle-id">@obstacle.ObstacleId</span>
+                                        <img src="~/images/signs/@(obstacle.ObstacleId).png" title="@($"{obstacle.Name}\n{obstacle.Description}")" draggable="true" class="obstacle-image" />
                                     </div>
                                 }
                             </div>
@@ -92,6 +93,7 @@
             height: 75px;
             margin-right: 2px;
             position: relative;
+            border: 1px solid black;
         }
 
         .obstacle-image {
