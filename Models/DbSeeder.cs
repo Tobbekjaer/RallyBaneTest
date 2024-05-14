@@ -32,10 +32,6 @@ namespace DcHRally.Models
 
                     var categoryId = 0;
 
-                    Console.WriteLine(id);
-                    Console.WriteLine(name);
-                    Console.WriteLine(description);
-
                     if (id <= 2 && id < 3)
                     {
                         categoryId = 1;
