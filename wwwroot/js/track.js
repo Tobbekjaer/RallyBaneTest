@@ -3,6 +3,7 @@ var sceneWidth = 948 * 2;
 var sceneHeight = 632 * 2;
 
 var signs = [];
+var elements = [];
 var arrows = [];
 
 var backgroundLayer = new Konva.Layer();
@@ -56,9 +57,16 @@ stage.add(signLayer);
 // DRAG AND DROP FUNCTIONALITY //
 
 // Handle drag and drop for sign images inside accordion containers
-document.querySelectorAll('.obstacle-image').forEach(function(image) {
-    image.addEventListener('dragstart', function(e) {
-        e.dataTransfer.setData('text/plain', e.target.src); // Set the image source as drag data
+document.querySelectorAll('.obstacle-image, .obstacleElement-image').forEach(function (image) {
+    image.addEventListener('dragstart', function (e) {
+        // Set the image source as drag data
+        e.dataTransfer.setData('text/plain', e.target.src);
+        // Set custom data attribute to mark the source container
+        if (image.classList.contains('obstacle-image')) {
+            e.dataTransfer.setData('sourceContainer', 'obstacle-image');
+        } else if (image.classList.contains('obstacleElement-image')) {
+            e.dataTransfer.setData('sourceContainer', 'obstacleElement-image');
+        }
     });
 });
 
@@ -79,10 +87,14 @@ stage.container().addEventListener('drop', function(e) {
         x: position.x / stage.scaleX(),
         y: position.y / stage.scaleY()
     };
-    
+
+    let sourceContainer = e.dataTransfer.getData('sourceContainer');
+    let isElement = false;
+    if (sourceContainer === 'obstacleElement-image') {
+        isElement = true;
+    }
     // Create Konva image from dropped URL
-    createSign(itemURL, positionScaled, 0);
-    
+    createSign(isElement, itemURL, positionScaled, 0);
 });
 
 // ARROW FUNCTIONALITY //
@@ -139,9 +151,11 @@ function clearSequenceTable() {
 }
 
 // ---- CREATE Sign ----
-function createSign(itemURL, position, rotation) {
+function createSign(isElement, itemURL, position, rotation) {
+    let signId;
+    if (!isElement) {
     let filename = itemURL.substring(itemURL.lastIndexOf("/") + 1);
-    let signId = filename.match(/\d+/)[0];
+    signId = filename.match(/\d+/)[0];
     // Check if there's already a sign at the dropped position
     var existingSign = signs.find(function (sign) {
         var signX = sign.x() - sign.width() / 2;
@@ -162,14 +176,11 @@ function createSign(itemURL, position, rotation) {
         };
         img.src = itemURL;
         return;
-
     }
-
-    Konva.Image.fromURL(itemURL, function (image) {
-        image.name("Sign");
+    }
+    Konva.Image.fromURL(itemURL, function (image) {        
         image.width(sceneWidth / 10);
-        image.height(sceneHeight / 10);
-        image.stroke('black');
+        image.height(sceneHeight / 10);        
         image.offsetX(image.width() / 2);
         image.offsetY(image.height() / 2);
         image.dragBoundFunc(function (pos) {
@@ -182,11 +193,19 @@ function createSign(itemURL, position, rotation) {
         });
         image.position(position);
         image.rotation(rotation);
-        image.draggable(true);        
-        image.id(signId);
-        signs.push(image);
-        updateSignSequenceTable();
+        image.draggable(true); 
 
+        if (isElement) {
+            image.name("Element");
+            elements.push(image);
+        } else {
+            image.stroke('black');
+            image.name("Sign");
+            image.id(signId);
+            signs.push(image);
+            updateArrows();
+            updateSignSequenceTable();
+        }
         // Add image to layer
         signLayer.add(image);
 
@@ -253,10 +272,11 @@ function getSignTransformer(sign) {
 // ---- CLEAR ----
 function clearStage() {
     signs = [];
+    elements = [];
     var children = signLayer.children;
     for (var i = children.length - 1; i >= 0; i--) {
         var child = children[i];
-        if (child.name() === 'Sign' || child.getClassName() == 'Transformer') {
+        if (child.name() === 'Element' || child.name() === 'Sign' || child.getClassName() == 'Transformer') {
             child.destroy();
         }
     }
@@ -270,11 +290,11 @@ function saveToJSON() {
 
     var children = signLayer.children;
     for (var i = 0; i < children.length; i++) {
-        if (children[i].name() === 'Sign') {
-            var shape = children[i];
-
+        var shape = children[i];
+        if (shape.name() === 'Sign') {
             var data = {
                 id: shape.id(),
+                name: shape.name(),
                 height: shape.height(),
                 rotation: shape.rotation(),
                 stroke: shape.stroke(),
@@ -286,7 +306,19 @@ function saveToJSON() {
                 src: shape.attrs.image.src,
                 draggable: 'true',
             };
-
+            konvaData.push(data);
+        } else if (shape.name() === 'Element') {            
+            var data = {
+                name: shape.name(),
+                height: shape.height(),
+                rotation: shape.rotation(),
+                offsetX: shape.offsetX(),
+                offsetY: shape.offsetY(),
+                x: shape.x(),
+                y: shape.y(),
+                src: shape.attrs.image.src,
+                draggable: 'true',
+            };
             konvaData.push(data);
         }
     }
@@ -304,8 +336,7 @@ function saveToJSON() {
 // ---- LOAD ----
 function loadFromJSON(jsonData) {
     clearStage();
-    var jsonArray = JSON.parse(jsonData);
-    idCount = jsonArray.length;
+    var jsonArray = JSON.parse(jsonData);    
     jsonArray.forEach(obj => {
         let itemURL = obj.src;
         let position = {
@@ -313,7 +344,11 @@ function loadFromJSON(jsonData) {
             y: obj.y
         };
         let rotation = obj.rotation;
-        let sign = createSign(itemURL, position, rotation);
+        let isElement = false;
+        if (obj.name === 'Element') {
+            isElement = true;
+        }
+        createSign(isElement, itemURL, position, rotation);
     });
 }
 function handleFileInputChange(event) {

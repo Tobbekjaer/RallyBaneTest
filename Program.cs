@@ -1,10 +1,9 @@
 using DcHRally.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
 using RallyBaneTest.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("Default") 
+var connectionString = builder.Configuration.GetConnectionString("Default")
         ?? throw new InvalidOperationException("Connection string 'Default' not found.");
 
 // Add services to the container.
@@ -12,10 +11,12 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IObstacleRepository, ObstacleRepository>();
+builder.Services.AddScoped<IObstacleElementRepository, ObstacleElementRepository>();
 
-builder.Services.AddDbContext<RallyDbContext>(options => {
+builder.Services.AddDbContext<RallyDbContext>(options =>
+{
     options.UseSqlServer(
-        builder.Configuration["ConnectionStrings:Default"]);    
+        builder.Configuration["ConnectionStrings:Default"]);
 });
 builder.Services.AddScoped<DbSeeder>();
 

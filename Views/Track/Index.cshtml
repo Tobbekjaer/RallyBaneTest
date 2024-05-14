@@ -45,6 +45,25 @@
                         </div>
                     </div>
                 }
+                var obstacleElements = Model.ObstacleElements;
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseObstacleElements" aria-expanded="false" aria-controls="collapseObstacleElements">
+                            Bane Elementer
+                        </button>
+                    </h2>
+                    <div id="collapseObstacleElements" class="accordion-collapse collapse" aria-labelledby="Bane Elementer">
+                        <div class="accordion-body obstacle-accordion-body">
+                            @foreach (var obstacleElement in obstacleElements)
+                            {                  
+                                <div class="obstacle-container text-center mx-2">
+                                    <div class="obstacle-name">@obstacleElement.Name</div>
+                                    <img src="~/images/obstacleElements/@(obstacleElement.Name).png" title="@(obstacleElement.Name)" draggable="true" class="obstacleElement-image" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
             }
         </div>
     </div>
@@ -66,7 +85,6 @@
         <button class="right-section-button" id="display-regulations">Reglement</button>
         <button class="right-section-button" id="clear-track" onclick="clearStage()">Ryd Bane</button>
         <button class="right-section-button" id="save-track" onclick="saveToJSON()" >Gem Bane</button>
-        @* <button class="right-section-button" id="search-import-tracks" onclick="loadFromJSON()">Hent bane</button> *@
         <label for="fileInput" class="custom-file-upload">
             <span>Hent bane fra fil:</span>
             <button type="button" onclick="document.getElementById('fileInput').click()">Choose File</button>
@@ -77,7 +95,6 @@
 
 
 @section scripts {
-    <!-- Scripts for Konva.js and other JavaScript functionality -->
     <script src="https://unpkg.com/konva@9.3.6/konva.min.js"></script>
     <script src="~/js/track.js"></script>
     <script src="~/js/obstacle.js"></script>
@@ -97,6 +114,11 @@
         }
 
         .obstacle-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .obstacleElement-image {
             width: 100%;
             height: auto;
         }

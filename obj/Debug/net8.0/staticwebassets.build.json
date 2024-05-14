@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oV5qgbY9j4pGo+7xgemGsUYGLklRB1HVXWxQZScjiew=",
+  "Hash": "/l3a2dzeQQTeZ13orvsy/xZkOCEz7/jZQq34bNgFAVI=",
   "Source": "DcHRally",
   "BasePath": "_content/DcHRally",
   "Mode": "Default",
@@ -112,12 +112,12 @@
       "OriginalItemSpec": "wwwroot\\images\\obstacleElements\\Bom.png"
     },
     {
-      "Identity": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\images\\obstacleElements\\Bum.png",
+      "Identity": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\images\\obstacleElements\\H.png",
       "SourceId": "DcHRally",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\",
       "BasePath": "_content/DcHRally",
-      "RelativePath": "images/obstacleElements/Bum.png",
+      "RelativePath": "images/obstacleElements/H.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -128,7 +128,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\obstacleElements\\Bum.png"
+      "OriginalItemSpec": "wwwroot\\images\\obstacleElements\\H.png"
     },
     {
       "Identity": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\images\\obstacleElements\\Kegle.png",
