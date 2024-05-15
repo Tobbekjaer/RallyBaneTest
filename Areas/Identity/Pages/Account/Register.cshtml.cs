@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using System.ComponentModel;
 
 namespace DcHRally.Areas.Identity.Pages.Account
 {
@@ -75,10 +76,34 @@ namespace DcHRally.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            /// 
+            [DisplayName("Fornavn")]
+            [MaxLength(100)]
+            [Required(ErrorMessage = "Fornavn er påkrævet")]
+            public string FirstName { get; set; } = null!; 
+
+            [DisplayName("Efternavn")]
+            [MaxLength(100)]
+            [Required(ErrorMessage = "Efternavn er påkrævet")]
+            public string LastName { get; set; } = null!; 
+
+            [DisplayName("Adresse")]
+            [MaxLength(100)]
+            [Required(ErrorMessage = "Adresse er påkrævet")]
+            public string Address { get; set; } = null!; 
+
+            [DisplayName("Postnummer")]
+            [MaxLength(10)]
+            [MinLength(4)]
+            [Required(ErrorMessage = "Postnummer er påkrævet")]
+            public string ZipCode { get; set; } = null!; 
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+            [Phone]
+            [Display(Name = "Telefon")]
+            public string PhoneNumber { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -114,6 +139,12 @@ namespace DcHRally.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+
+                user.FirstName = Input.FirstName;
+                user.LastName = Input.LastName;
+                user.Address = Input.Address;
+                user.ZipCode = Input.ZipCode;
+                user.PhoneNumber = Input.PhoneNumber;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
