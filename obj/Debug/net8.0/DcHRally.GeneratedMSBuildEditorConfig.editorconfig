@@ -9,39 +9,39 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DcHRally
 build_property.RootNamespace = DcHRally
-build_property.ProjectDir = /Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/
+build_property.ProjectDir = C:\Users\Minik\source\repos\DcHRally\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally
+build_property.MSBuildProjectDirectory = C:\Users\Minik\source\repos\DcHRally
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[C:/Users/Minik/source/repos/DcHRally/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/Minik/source/repos/DcHRally/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/Views/Track/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVHJhY2svSW5kZXguY3NodG1s
+[C:/Users/Minik/source/repos/DcHRally/Views/Track/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhY2tcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/Views/Track/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVHJhY2svUHJpdmFjeS5jc2h0bWw=
+[C:/Users/Minik/source/repos/DcHRally/Views/Track/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhY2tcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/Minik/source/repos/DcHRally/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/Minik/source/repos/DcHRally/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-y80uu077i5
+[C:/Users/Minik/source/repos/DcHRally/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-80eymmlzrr
