@@ -3,6 +3,7 @@
 #nullable disable
 
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
@@ -56,8 +57,29 @@ namespace DcHRally.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            /// 
+            [DisplayName("Fornavn")]
+            [MaxLength(100)]
+            [Required(ErrorMessage = "Fornavn er påkrævet")]
+            public string FirstName { get; set; } = null!; 
+
+            [DisplayName("Efternavn")]
+            [MaxLength(100)]
+            [Required(ErrorMessage = "Efternavn er påkrævet")]
+            public string LastName { get; set; } = null!; 
+
+            [DisplayName("Adresse")]
+            [MaxLength(100)]
+            [Required(ErrorMessage = "Adresse er påkrævet")]
+            public string Address { get; set; } = null!; 
+
+            [DisplayName("Postnummer")]
+            [MaxLength(10)]
+            [MinLength(4)]
+            [Required(ErrorMessage = "Postnummer er påkrævet")]
+            public string ZipCode { get; set; } = null!; 
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Telefon")]
             public string PhoneNumber { get; set; }
         }
 
@@ -70,6 +92,10 @@ namespace DcHRally.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Address = user.Address,
+                ZipCode = user.ZipCode,
                 PhoneNumber = phoneNumber
             };
         }
@@ -110,6 +136,28 @@ namespace DcHRally.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+
+            if (Input.FirstName != user.FirstName)
+            {
+                user.FirstName = Input.FirstName;
+            }
+
+            if (Input.LastName != user.LastName)
+            {
+                user.LastName = Input.LastName;
+            }
+
+            if (Input.Address != user.Address)
+            {
+                user.Address = Input.Address;
+            }
+
+            if (Input.ZipCode != user.ZipCode)
+            {
+                user.ZipCode = Input.ZipCode;
+            }
+
+            await _userManager.UpdateAsync(user);
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
