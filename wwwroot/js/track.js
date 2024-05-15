@@ -105,6 +105,8 @@ function createArrow(startSign, endSign) {
     var dy = endPos.y - startPos.y;
     var angle = Math.atan2(dy, dx);
 
+    var radius = 20;
+
     var arrow = new Konva.Arrow({
         x: startPos.x,
         y: startPos.y,
