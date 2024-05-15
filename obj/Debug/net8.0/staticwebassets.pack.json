@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\css\\trackStyle.css",
+      "PackagePath": "staticwebassets\\css\\trackStyle.css"
+    },
+    {
       "Id": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

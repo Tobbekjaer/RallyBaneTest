@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/l3a2dzeQQTeZ13orvsy/xZkOCEz7/jZQq34bNgFAVI=",
+  "Hash": "OKwGww35Gwv3XmINENfAfEyVBRMzZWqqIelpaom2haA=",
   "Source": "DcHRally",
   "BasePath": "_content/DcHRally",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\css\\trackStyle.css",
+      "SourceId": "DcHRally",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\",
+      "BasePath": "_content/DcHRally",
+      "RelativePath": "css/trackStyle.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\trackStyle.css"
     },
     {
       "Identity": "C:\\Users\\Minik\\source\\repos\\DcHRally\\wwwroot\\favicon.ico",

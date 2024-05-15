@@ -199,7 +199,18 @@ function createSign(isElement, itemURL, position, rotation) {
             image.name("Element");
             elements.push(image);
         } else {
-            image.stroke('black');
+            if (signId < 3) {
+                image.stroke('black');
+            } else if (signId >= 3 && signId < 100) {
+                image.stroke('green');
+            } else if (signId >= 100 && signId < 200) {
+                image.stroke('blue');
+            } else if (signId >= 200 && signId < 300) {
+                image.stroke('yellow');
+            } else if (signId >= 300) {
+                image.stroke('red');
+            }
+            image.strokeWidth(image.width()/15);
             image.name("Sign");
             image.id(signId);
             signs.push(image);
@@ -213,12 +224,11 @@ function createSign(isElement, itemURL, position, rotation) {
         var transformer = new Konva.Transformer({
             centeredScaling: true,
             rotationSnaps: [0, 90, 180, 270],
-            resizeEnabled: false,
+            resizeEnabled: false
         });
+       
         signLayer.add(transformer);
         transformer.nodes([image]);
-
-      
 
         // Event listener to show/hide Transformer when image is clicked
         image.on('click', function (evt) {
