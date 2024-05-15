@@ -132,7 +132,7 @@ namespace DcHRally.Areas.Identity.Pages.Account.Manage
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
-                    StatusMessage = "Unexpected error when trying to set phone number.";
+                    StatusMessage = "Uventet fejl opstod ved opdatering a telefonnummer.";
                     return RedirectToPage();
                 }
             }
@@ -160,7 +160,7 @@ namespace DcHRally.Areas.Identity.Pages.Account.Manage
             await _userManager.UpdateAsync(user);
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Din profil er blevet opdateret!";
             return RedirectToPage();
         }
     }
