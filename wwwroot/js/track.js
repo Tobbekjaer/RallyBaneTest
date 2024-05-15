@@ -139,8 +139,10 @@ function updateSignSequenceTable() {
     var row = table.insertRow(0); // Insert a single row
     for (var i = 0; i < signs.length; i++) {        
         let signId = signs[i].id();
-            var cell = row.insertCell(i); // Insert cells horizontally
-            cell.innerHTML = " " + (i + 1) + ": Skilt: " + signId + " ";        
+        if (signId > 2) {
+            var cell = row.insertCell(row.cells.length); // Insert cells horizontally
+            cell.innerHTML = " " + (row.cells.length) + ": Skilt: " + signId + " ";
+        }       
     }
     updateArrows();
 }
