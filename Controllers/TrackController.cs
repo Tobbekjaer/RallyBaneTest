@@ -1,4 +1,5 @@
 using DcHRally.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RallyBaneTest.Models;
 using RallyBaneTest.ViewModels;
@@ -6,6 +7,7 @@ using System.Diagnostics;
 
 namespace RallyBaneTest.Controllers;
 
+[Authorize]
 public class TrackController : Controller
 {
     private IObstacleRepository _obstacleRepository;
