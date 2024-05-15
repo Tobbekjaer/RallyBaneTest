@@ -35,9 +35,9 @@
     transition: background-color 0.3s;
 }
 
-    .right-section-button:hover {
-        background-color: #0056b3;
-    }
+.right-section-button:hover {
+    background-color: #0056b3;
+}
 
 .accordion-button {
     cursor: pointer;
@@ -50,9 +50,9 @@
     text-align: center;
 }
 
-    .accordion-button:hover {
-        background-color: #e0e0e0;
-    }
+.accordion-button:hover {
+    background-color: #e0e0e0;
+}
 
 .accordion-collapse {
     padding: 4px;

@@ -137,10 +137,14 @@ function updateSignSequenceTable() {
     var table = document.getElementById("sign-sequence").getElementsByTagName('table')[0];
     table.innerHTML = "";
     var row = table.insertRow(0); // Insert a single row
+    let count = 0;
     for (var i = 0; i < signs.length; i++) {        
         let signId = signs[i].id();
-        var cell = row.insertCell(i); // Insert cells horizontally
-        cell.innerHTML = " " + (i + 1) + ": Skilt: " + signId + " ";
+        if (signId >= 3) {
+            var cell = row.insertCell(i); // Insert cells horizontally
+            cell.innerHTML = " " + (count + 1) + ": Skilt: " + signId + " ";
+            count++;
+        }
     }
     updateArrows();
 }
@@ -172,7 +176,8 @@ function createSign(isElement, itemURL, position, rotation) {
         img.onload = function () {
             existingSign.image(img);
             existingSign.id(signId);
-            updateSignSequenceTable();
+            setSignBorderStroke(existingSign);
+            updateSignSequenceTable(existingSign);
         };
         img.src = itemURL;
         return;
@@ -199,20 +204,10 @@ function createSign(isElement, itemURL, position, rotation) {
             image.name("Element");
             elements.push(image);
         } else {
-            if (signId < 3) {
-                image.stroke('black');
-            } else if (signId >= 3 && signId < 100) {
-                image.stroke('green');
-            } else if (signId >= 100 && signId < 200) {
-                image.stroke('blue');
-            } else if (signId >= 200 && signId < 300) {
-                image.stroke('yellow');
-            } else if (signId >= 300) {
-                image.stroke('red');
-            }
+            image.id(signId);
+            setSignBorderStroke(image);
             image.strokeWidth(image.width()/15);
             image.name("Sign");
-            image.id(signId);
             signs.push(image);
             updateArrows();
             updateSignSequenceTable();
@@ -277,6 +272,21 @@ function getSignTransformer(sign) {
     })[0];
 
     return transformer;
+}
+
+function setSignBorderStroke(sign) {
+    let id = sign.id();
+    if (id < 3) {
+        sign.stroke('black');
+    } else if (id >= 3 && id < 100) {
+        sign.stroke('green');
+    } else if (id >= 100 && id < 200) {
+        sign.stroke('blue');
+    } else if (id >= 200 && id < 300) {
+        sign.stroke('yellow');
+    } else if (id >= 300) {
+        sign.stroke('red');
+    }
 }
 
 // ---- CLEAR ----
