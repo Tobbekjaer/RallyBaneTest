@@ -137,14 +137,10 @@ function updateSignSequenceTable() {
     var table = document.getElementById("sign-sequence").getElementsByTagName('table')[0];
     table.innerHTML = "";
     var row = table.insertRow(0); // Insert a single row
-    let count = 0;
     for (var i = 0; i < signs.length; i++) {        
         let signId = signs[i].id();
-        if (signId >= 3) {
             var cell = row.insertCell(i); // Insert cells horizontally
-            cell.innerHTML = " " + (count + 1) + ": Skilt: " + signId + " ";
-            count++;
-        }
+            cell.innerHTML = " " + (i + 1) + ": Skilt: " + signId + " ";        
     }
     updateArrows();
 }
