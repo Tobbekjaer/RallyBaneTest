@@ -73,7 +73,23 @@
 
     <!-- Center Section: Track builder -->
     <div class="col-md-7">
-        <h2>Banebyggeren</h2>
+        <h2 style="display: inline-block;">Banebyggeren</h2>
+
+        <div class="input-container">            
+            <input type="text" class="text-field" id="track-name" placeholder="Angiv evt. banenavn" style="display: inline-block; float: right;" />
+            <label for="category-selector">Vælg kategori:</label>
+            <select id="category-selector">
+                @if (Model != null && Model.Obstacles != null)
+                {
+                    var categories = Model.Obstacles.Where(o => o.Category.CategoryId != 1).GroupBy(o => o.Category);
+                    foreach (var category in categories)
+                    {
+                        <option value="@category.Key.Name">@category.Key.Name</option>                      
+                    }
+                }
+             </select>
+         </div>
+
         <div id="trackContainer"></div>
         <h6>Rækkefølge:</h6>
         <div class="table" id="sign-sequence">

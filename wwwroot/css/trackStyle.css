@@ -81,6 +81,11 @@
     pointer-events: none;
 }
 
+
+.input-container {
+    align-content: center;
+}
+
 #trackContainer {
     width: auto;
 }

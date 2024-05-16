@@ -1,8 +1,8 @@
+using DcHRally.Areas.Identity.Data;
 using DcHRally.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RallyBaneTest.Models;
-using DcHRally.Areas.Identity.Data;
-using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -69,48 +69,48 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 // Seed custom roles during application startup
-using(var scope = app.Services.CreateScope())
-    {
-        var roleManager = 
-            scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-        
-        var roles = new[] { "Admin", "Instruktør", "Dommer"};
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager =
+        scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-        foreach (var role in roles)
-        {
-            if(!await roleManager.RoleExistsAsync(role))
-                await roleManager.CreateAsync(new IdentityRole(role));
-        }
+    var roles = new[] { "Admin", "Instruktør", "Dommer" };
+
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+            await roleManager.CreateAsync(new IdentityRole(role));
     }
+}
 
 // Create application admin account 
-using(var scope = app.Services.CreateScope())
+using (var scope = app.Services.CreateScope())
+{
+    var userManager =
+        scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+    string firstName = "Admin";
+    string lastName = "Admin";
+    string address = "Ny Kongevej 5";
+    string ZipCode = "4000";
+    string email = "admin@admin.com";
+    string password = "Admin123$";
+
+    if (await userManager.FindByEmailAsync(email) == null)
     {
-        var userManager = 
-            scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-        
-        string firstName = "Admin";
-        string lastName = "Admin";
-        string address = "Ny Kongevej 5";
-        string ZipCode = "4000";
-        string email = "admin@admin.com";
-        string password = "Admin123$";
+        var user = new ApplicationUser();
+        user.FirstName = firstName;
+        user.LastName = lastName;
+        user.Address = address;
+        user.ZipCode = ZipCode;
+        user.UserName = email;
+        user.Email = email;
+        user.PasswordHash = password;
 
-        if(await userManager.FindByEmailAsync(email) == null)
-        {
-            var user = new ApplicationUser();
-            user.FirstName = firstName;
-            user.LastName = lastName;
-            user.Address = address;
-            user.ZipCode = ZipCode;
-            user.UserName = email;
-            user.Email = email;
-            user.PasswordHash = password;
+        await userManager.CreateAsync(user, password);
 
-            await userManager.CreateAsync(user, password);
-
-            await userManager.AddToRoleAsync(user, "Admin");
-        }
+        await userManager.AddToRoleAsync(user, "Admin");
     }
+}
 
 app.Run();

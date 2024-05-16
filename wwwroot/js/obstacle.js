@@ -44,3 +44,4 @@ function hideTooltip() {
         tooltip.remove();
     }
 }
+

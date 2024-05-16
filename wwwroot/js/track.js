@@ -307,6 +307,8 @@ function clearStage() {
 // ---- SAVE ----
 function saveToJSON() {
     var konvaData = [];
+    var trackName = document.getElementById('track-name').value;
+    konvaData.push(trackName);
 
     var children = signLayer.children;
     for (var i = 0; i < children.length; i++) {
@@ -357,6 +359,10 @@ function saveToJSON() {
 function loadFromJSON(jsonData) {
     clearStage();
     var jsonArray = JSON.parse(jsonData);    
+
+    var trackName = jsonArray[0];
+    document.getElementById('track-name').value = trackName;
+
     jsonArray.forEach(obj => {
         let itemURL = obj.src;
         let position = {

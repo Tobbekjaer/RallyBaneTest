@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="../buildMultiTargeting/DcHRally.props" />
+  <Import Project="..\buildMultiTargeting\DcHRally.props" />
 </Project>
