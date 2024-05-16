@@ -1,0 +1,25 @@
+@using DcHRally.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity;
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@if(User.IsInRole("Admin"))
+{
+    <h1>Hej Admin</h1>
+} else if (User.IsInRole("Instruktør"))
+{
+    <h1>Hej Instruktør</h1>
+} else if (User.IsInRole("Dommer"))
+{
+    <h1>Hej Dommer</h1>
+}
