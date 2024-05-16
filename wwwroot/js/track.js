@@ -309,6 +309,8 @@ function saveToJSON() {
     var konvaData = [];
     var trackName = document.getElementById('track-name').value;
     konvaData.push(trackName);
+    var category = document.getElementById('category-selector').value;
+    konvaData.push(category);
 
     var children = signLayer.children;
     for (var i = 0; i < children.length; i++) {
@@ -362,6 +364,9 @@ function loadFromJSON(jsonData) {
 
     var trackName = jsonArray[0];
     document.getElementById('track-name').value = trackName;
+    var trackName = jsonArray[1];
+    document.getElementById('category-selector').value = trackName;
+    jsonArray.splice(0, 2);
 
     jsonArray.forEach(obj => {
         let itemURL = obj.src;
