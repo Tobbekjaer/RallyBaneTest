@@ -101,28 +101,35 @@ stage.container().addEventListener('drop', function(e) {
 function createArrow(startSign, endSign) {
     var startPos = startSign.position();
     var endPos = endSign.position();
-    var dx = endPos.x - startPos.x;
-    var dy = endPos.y - startPos.y;
-    var angle = Math.atan2(dy, dx);
 
-    var radius = 20;
-
-    var arrow = new Konva.Arrow({
-        x: startPos.x,
-        y: startPos.y,
-        points: [0, 0, Math.sqrt(dx * dx + dy * dy), 0],
+    var arrow = new Konva.Arrow({       
+        points: getArrowPoints(startPos, endPos),
         pointerLength: 10,
         pointerWidth: 10,
-        fill: 'black',
+        fill: 'white',
         stroke: 'black',
-        strokeWidth: 2,
-        rotation: angle * (180 / Math.PI)
+        strokeWidth: 5,        
+        fillAfterStrokeEnabled: true
     });
     arrows.push(arrow);
     arrowLayer.add(arrow);
     arrowLayer.batchDraw();
 }
 
+function getArrowPoints(from, to) {
+    let dx = to.x - from.x;
+    let dy = to.y - from.y;
+    let angle = Math.atan2(-dy, dx);
+
+    let radius = 120;
+
+    return [
+        from.x + -radius * Math.cos(angle + Math.PI),
+        from.y + radius * Math.sin(angle + Math.PI),
+        to.x + -radius * Math.cos(angle),
+        to.y + radius * Math.sin(angle),
+    ];
+}
 function updateArrows() {
     for (var i = 0; i < arrows.length; i++) {
         arrows[i].destroy();
