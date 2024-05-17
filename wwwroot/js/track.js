@@ -93,7 +93,6 @@ stage.container().addEventListener('drop', function(e) {
     if (sourceContainer === 'obstacleElement-image') {
         isElement = true;
     }
-    // Create Konva image from dropped URL
     createSign(isElement, itemURL, positionScaled, 0);
 });
 
@@ -108,8 +107,9 @@ function createArrow(startSign, endSign) {
         pointerWidth: 10,
         fill: 'white',
         stroke: 'black',
-        strokeWidth: 5,        
-        fillAfterStrokeEnabled: true
+        strokeWidth: 5,
+        fillAfterStrokeEnabled: true,
+        hitStrokeWidth: 50
     });
     arrows.push(arrow);
     arrowLayer.add(arrow);
@@ -190,11 +190,12 @@ function createSign(isElement, itemURL, position, rotation) {
         return;
     }
     }
-    Konva.Image.fromURL(itemURL, function (image) {        
+    Konva.Image.fromURL(itemURL, function (image) {           
         image.width(sceneWidth / 10);
         image.height(sceneHeight / 10);        
         image.offsetX(image.width() / 2);
-        image.offsetY(image.height() / 2);
+        image.offsetY(image.height() / 2);   
+        image.cornerRadius(10);
         image.dragBoundFunc(function (pos) {
             var newX = Math.max(stage.x() + image.width() / 4, Math.min(stage.x() + stage.width() - image.width() / 4, pos.x));
             var newY = Math.max(stage.y() + image.height() / 4, Math.min(stage.y() + stage.height() - image.height() / 4, pos.y));
@@ -213,13 +214,12 @@ function createSign(isElement, itemURL, position, rotation) {
         } else {
             image.id(signId);
             setSignBorderStroke(image);
-            image.strokeWidth(image.width()/15);
+            image.strokeWidth(image.width() / 15);
             image.name("Sign");
             signs.push(image);
             updateArrows();
             updateSignSequenceTable();
         }
-        // Add image to layer
         signLayer.add(image);
 
         // Attach Transformer to the image with rotation only
