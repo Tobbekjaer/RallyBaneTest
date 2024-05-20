@@ -21,17 +21,29 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "HomeControllerTest.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\HomeControllerTest.cs",
               "RelativeDocumentMoniker": "..\\DcHRally.Test\\HomeControllerTest.cs",
-              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\HomeControllerTest.cs*",
-              "RelativeToolTip": "..\\DcHRally.Test\\HomeControllerTest.cs*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
+              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\HomeControllerTest.cs",
+              "RelativeToolTip": "..\\DcHRally.Test\\HomeControllerTest.cs",
+              "ViewState": "AQIAAC4AAABAzczMzAwswDUAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-20T13:12:25.573Z",
               "EditorCaption": ""
@@ -57,18 +69,10 @@
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
               "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Controllers\\HomeController.cs",
               "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAMAAADgNDMzMzMbwAAAAAAAAAAA",
+              "ViewState": "AQIAAAkAAACAMzMzMzMvwBsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-20T12:59:01.303Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             }
           ]
         }
