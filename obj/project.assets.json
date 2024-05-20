@@ -8252,24 +8252,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/tobiaskjaer/.nuget/packages/": {}
+    "C:\\Users\\sebastian\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/DcHRally.csproj",
+      "projectUniqueName": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\DcHRally.csproj",
       "projectName": "DcHRally",
-      "projectPath": "/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/DcHRally.csproj",
-      "packagesPath": "/Users/tobiaskjaer/.nuget/packages/",
-      "outputPath": "/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/obj/",
+      "projectPath": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\DcHRally.csproj",
+      "packagesPath": "C:\\Users\\sebastian\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/tobiaskjaer/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\sebastian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8345,16 +8347,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Minik\\source\\repos\\DcHRally\\obj\\project.nuget.cache : After parsing a value an unexpected character was encountered: \". Path 'expectedPackageFiles[166]', line 175, position 4."
-    }
-  ]
+  }
 }

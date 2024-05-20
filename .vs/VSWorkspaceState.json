@@ -1,12 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Models",
-    "\\Views",
-    "\\Views\\Track",
-    "\\wwwroot",
-    "\\wwwroot\\js"
+    ""
   ],
-  "SelectedNode": "\\Views\\Track\\Index.cshtml",
+  "SelectedNode": "\\RallyBane.sln",
   "PreviewInSolutionExplorer": false
 }
