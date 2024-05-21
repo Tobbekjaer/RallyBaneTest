@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Iq6YlXN7UGbRou9R7hs4LE5eg/Cm7y07a5tRCbgh6jo=",
+  "Hash": "9yw3Kbku71d9xKQBjmw9sFOF2STq+sDwAyEfwbr1clw=",
   "Source": "DcHRally",
   "BasePath": "_content/DcHRally",
   "Mode": "Default",
@@ -1195,6 +1195,25 @@
       "OriginalItemSpec": "/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/obj/Debug/net8.0/scopedcss/projectbundle/DcHRally.bundle.scp.css"
     },
     {
+      "Identity": "/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/wwwroot/css/custom.css",
+      "SourceId": "DcHRally",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/wwwroot/",
+      "BasePath": "_content/DcHRally",
+      "RelativePath": "css/custom.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/custom.css"
+    },
+    {
       "Identity": "/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/wwwroot/css/site.css",
       "SourceId": "DcHRally",
       "SourceType": "Discovered",
@@ -1250,6 +1269,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/wwwroot/images/dchlogo.png",
+      "SourceId": "DcHRally",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/wwwroot/",
+      "BasePath": "_content/DcHRally",
+      "RelativePath": "images/dchlogo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/dchlogo.png"
     },
     {
       "Identity": "/Users/tobiaskjaer/Repoes/DcHRallyProjekt/DcHRally/wwwroot/images/obstacleElements/Bom.png",
