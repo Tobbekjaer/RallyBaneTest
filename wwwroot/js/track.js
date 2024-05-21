@@ -1,4 +1,4 @@
-// Create Konva stage and layer
+// ---- SETUP ----
 var sceneWidth = 948 * 2;
 var sceneHeight = 632 * 2;
 
@@ -33,7 +33,7 @@ fitStageIntoParentContainer();
 // adapt the stage on any window resize
 window.addEventListener('resize', fitStageIntoParentContainer);
 
-// IMAGE FUNCTIONALITY //
+// ---- BACKGROUND ----
 
 // Add background image to the stage
 var backgroundImage = new Image();
@@ -54,7 +54,7 @@ stage.add(arrowLayer);
 stage.add(signLayer);
 
 
-// DRAG AND DROP FUNCTIONALITY //
+// ---- DRAG AND DROP FUNCTIONALITY ----
 
 // Handle drag and drop for sign images inside accordion containers
 document.querySelectorAll('.obstacle-image, .obstacleElement-image').forEach(function (image) {
@@ -96,105 +96,41 @@ stage.container().addEventListener('drop', function(e) {
     createSign(isElement, itemURL, positionScaled, 0);
 });
 
-// ARROW FUNCTIONALITY //
-function createArrow(startSign, endSign) {
-    var startPos = startSign.position();
-    var endPos = endSign.position();
-
-    var arrow = new Konva.Arrow({       
-        points: getArrowPoints(startPos, endPos),
-        pointerLength: 10,
-        pointerWidth: 10,
-        fill: 'white',
-        stroke: 'black',
-        strokeWidth: 5,
-        fillAfterStrokeEnabled: true,
-        hitStrokeWidth: 50
-    });
-    arrows.push(arrow);
-    arrowLayer.add(arrow);
-    arrowLayer.batchDraw();
-}
-
-function getArrowPoints(from, to) {
-    let dx = to.x - from.x;
-    let dy = to.y - from.y;
-    let angle = Math.atan2(-dy, dx);
-
-    let radius = 120;
-
-    return [
-        from.x + -radius * Math.cos(angle + Math.PI),
-        from.y + radius * Math.sin(angle + Math.PI),
-        to.x + -radius * Math.cos(angle),
-        to.y + radius * Math.sin(angle),
-    ];
-}
-function updateArrows() {
-    for (var i = 0; i < arrows.length; i++) {
-        arrows[i].destroy();
-    }
-    for (var i = 0; i < signs.length - 1; i++) {
-        var startSign = signs[i];
-        var endSign = signs[i + 1];
-        createArrow(startSign, endSign);
-    }
-}
-
-// ---- SEQUENCE TABLE ----
-function updateSignSequenceTable() {
-    var table = document.getElementById("sign-sequence").getElementsByTagName('table')[0];
-    table.innerHTML = "";
-    var row = table.insertRow(0); // Insert a single row
-    for (var i = 0; i < signs.length; i++) {        
-        let signId = signs[i].id();
-        if (signId > 2) {
-            var cell = row.insertCell(row.cells.length); // Insert cells horizontally
-            cell.innerHTML = " " + (row.cells.length) + ": Skilt: " + signId + " ";
-        }       
-    }
-    updateArrows();
-}
-
-function clearSequenceTable() {
-    var table = document.getElementById("sign-sequence").getElementsByTagName('table')[0];
-    table.innerHTML = "";
-}
-
 // ---- CREATE Sign ----
 function createSign(isElement, itemURL, position, rotation) {
     let signId;
     if (!isElement) {
-    let filename = itemURL.substring(itemURL.lastIndexOf("/") + 1);
-    signId = filename.match(/\d+/)[0];
-    // Check if there's already a sign at the dropped position
-    var existingSign = signs.find(function (sign) {
-        var signX = sign.x() - sign.width() / 2;
-        var signY = sign.y() - sign.height() / 2;
-        var signWidth = sign.width();
-        var signHeight = sign.height();
+        let filename = itemURL.substring(itemURL.lastIndexOf("/") + 1);
+        signId = filename.match(/\d+/)[0];
 
-        return position.x >= signX && position.x <= signX + signWidth &&
-            position.y >= signY && position.y <= signY + signHeight;
-    });
+        // Check if there's already a sign at the dropped position
+        var existingSign = signs.find(function (sign) {
+            var signX = sign.x() - sign.width() / 2;
+            var signY = sign.y() - sign.height() / 2;
+            var signWidth = sign.width();
+            var signHeight = sign.height();
 
-    if (existingSign) {
-        var img = new Image();
-        img.onload = function () {
-            existingSign.image(img);
-            existingSign.id(signId);
-            setSignBorderStroke(existingSign);
-            updateSignSequenceTable(existingSign);
-        };
-        img.src = itemURL;
-        return;
+            return position.x >= signX && position.x <= signX + signWidth &&
+                position.y >= signY && position.y <= signY + signHeight;
+        });
+
+        if (existingSign) {
+            var img = new Image();
+            img.onload = function () {
+                existingSign.image(img);
+                existingSign.id(signId);
+                setSignBorderStroke(existingSign);
+                updateSignSequenceTable(existingSign);
+            };
+            img.src = itemURL;
+            return;
+        }
     }
-    }
-    Konva.Image.fromURL(itemURL, function (image) {           
+    Konva.Image.fromURL(itemURL, function (image) {
         image.width(sceneWidth / 10);
-        image.height(sceneHeight / 10);        
+        image.height(sceneHeight / 10);
         image.offsetX(image.width() / 2);
-        image.offsetY(image.height() / 2);   
+        image.offsetY(image.height() / 2);
         image.cornerRadius(10);
         image.dragBoundFunc(function (pos) {
             var newX = Math.max(stage.x() + image.width() / 4, Math.min(stage.x() + stage.width() - image.width() / 4, pos.x));
@@ -206,7 +142,7 @@ function createSign(isElement, itemURL, position, rotation) {
         });
         image.position(position);
         image.rotation(rotation);
-        image.draggable(true); 
+        image.draggable(true);
 
         if (isElement) {
             image.name("Element");
@@ -228,7 +164,7 @@ function createSign(isElement, itemURL, position, rotation) {
             rotationSnaps: [0, 90, 180, 270],
             resizeEnabled: false
         });
-       
+
         signLayer.add(transformer);
         transformer.nodes([image]);
 
@@ -294,6 +230,71 @@ function setSignBorderStroke(sign) {
     } else if (id >= 300) {
         sign.stroke('red');
     }
+}
+
+// ---- ARROW FUNCTIONALITY ----
+function createArrow(startSign, endSign) {
+    var startPos = startSign.position();
+    var endPos = endSign.position();
+
+    var arrow = new Konva.Arrow({       
+        points: getArrowPoints(startPos, endPos),
+        pointerLength: 10,
+        pointerWidth: 10,
+        fill: 'white',
+        stroke: 'black',
+        strokeWidth: 5,
+        fillAfterStrokeEnabled: true,
+        hitStrokeWidth: 50
+    });
+    arrows.push(arrow);
+    arrowLayer.add(arrow);
+    arrowLayer.batchDraw();
+}
+
+function getArrowPoints(from, to) {
+    let dx = to.x - from.x;
+    let dy = to.y - from.y;
+    let angle = Math.atan2(-dy, dx);
+
+    let radius = 120;
+
+    return [
+        from.x + -radius * Math.cos(angle + Math.PI),
+        from.y + radius * Math.sin(angle + Math.PI),
+        to.x + -radius * Math.cos(angle),
+        to.y + radius * Math.sin(angle),
+    ];
+}
+function updateArrows() {
+    for (var i = 0; i < arrows.length; i++) {
+        arrows[i].destroy();
+    }
+    for (var i = 0; i < signs.length - 1; i++) {
+        var startSign = signs[i];
+        var endSign = signs[i + 1];
+        createArrow(startSign, endSign);
+    }
+}
+
+// ---- SEQUENCE TABLE ----
+function updateSignSequenceTable() {
+    var table = document.getElementById("sign-sequence").getElementsByTagName('table')[0];
+    table.innerHTML = "";
+    var row = table.insertRow(0); // Insert a single row
+    for (var i = 0; i < signs.length; i++) {        
+        let signId = signs[i].id();
+        if (signId > 2) {
+            var cell = row.insertCell(row.cells.length); // Insert cells horizontally
+            cell.innerHTML = " " + (row.cells.length) + ": Skilt: " + signId + " ";
+        }       
+    }
+    updateArrows();
+}
+
+function clearSequenceTable() {
+    var table = document.getElementById("sign-sequence").getElementsByTagName('table')[0];
+    table.innerHTML = "";
 }
 
 // ---- CLEAR ----
