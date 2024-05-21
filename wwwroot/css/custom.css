@@ -3,16 +3,18 @@
 /* Navbar styles */
 .navbar-custom {
     background-color: #0a5494;
+    padding: 0 5px; /* Adjust vertical padding */
 }
 
 .navbar-custom .navbar-brand,
 .navbar-custom .nav-link {
     color: #fdf5e6;
     font-weight: bold;
+    margin: 0 15px; /* Adjust horizontal margin */
 }
 
 .navbar-custom .nav-link:hover {
-    color: #f0e5d8; /* Slightly different color for hover effect */
+    color: #add8e6;
 }
 
 /* Body styles */
@@ -23,16 +25,23 @@ body {
 }
 
 /* Logo styles */
-.navbar-logo {
-    width: 50%;
+.navbar-custom .navbar-brand .navbar-logo {
+    max-width: 35%; /* Adjust the size as needed */
     height: auto;
     display: block;
     margin: 0 auto;
 }
 
-.navbar-title {
+.navbar-custom .navbar-title {
     color: #fdf5e6;
-    font-size: small;
+    font-size: x-small;
     text-align: center;
     display: block;
+}
+
+/* Separator styles */
+.navbar-separator {
+    border-right: 1px solid #add8e6; /* Light blue */
+    height: 40px; /* Adjust the height of the separator */
+    margin: 0 10px; /* Adjust the margin around the separator */
 }
