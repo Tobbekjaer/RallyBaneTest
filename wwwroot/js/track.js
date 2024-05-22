@@ -1,20 +1,39 @@
-// Create Konva stage and layer
+// ---- SETUP ----
+var sceneWidth = 948 * 2;
+var sceneHeight = 632 * 2;
+
+var signs = [];
+var elements = [];
+var arrows = [];
+
+var backgroundLayer = new Konva.Layer();
+var signLayer = new Konva.Layer();
+var arrowLayer = new Konva.Layer();
+
 var stage = new Konva.Stage({
-    container: 'container', // ID of the container <div>
-    width: 650,
-    height: 430,
+    container: 'trackContainer', // ID of the container <div>
+    width: sceneWidth,
+    height: sceneHeight,
 });
 
-// IMAGE FUNCTIONALITY //
+function fitStageIntoParentContainer() {
+    var container = document.querySelector('#trackContainer');
+    // now we need to fit stage into parent container
+    var containerWidth = container.offsetWidth;
 
-var imageLayer = new Konva.Layer();
+    // but we also make the full scene visible
+    // so we need to scale all objects on canvas
+    var scale = containerWidth / sceneWidth;
 
-var text = new Konva.Text({
-    x: 5,
-    y: 5,
-});
+    stage.width(sceneWidth * scale);
+    stage.height(sceneHeight * scale);
+    stage.scale({ x: scale, y: scale });
+}
+fitStageIntoParentContainer();
+// adapt the stage on any window resize
+window.addEventListener('resize', fitStageIntoParentContainer);
 
-imageLayer.add(text);
+// ---- BACKGROUND ----
 
 // Add background image to the stage
 var backgroundImage = new Image();
@@ -22,21 +41,32 @@ backgroundImage.src = '/images/RallyBane.png'; // Path to the background image
 backgroundImage.onload = function() {
     var background = new Konva.Image({
         image: backgroundImage,
-        width: stage.width(),
-        height: stage.height(),
+        width: sceneWidth,
+        height: sceneHeight,        
     });
-    imageLayer.add(background);
-    imageLayer.draw();
+    backgroundLayer.add(background);
+    background.moveToBottom();
+    backgroundLayer.draw();
 };
 
-stage.add(imageLayer);
+stage.add(backgroundLayer);
+stage.add(arrowLayer);
+stage.add(signLayer);
 
-// DRAG AND DROP FUNCTIONALITY //
+
+// ---- DRAG AND DROP FUNCTIONALITY ----
 
 // Handle drag and drop for sign images inside accordion containers
-document.querySelectorAll('.obstacle-image').forEach(function(image) {
-    image.addEventListener('dragstart', function(e) {
-        e.dataTransfer.setData('text/plain', e.target.src); // Set the image source as drag data
+document.querySelectorAll('.obstacle-image, .obstacleElement-image').forEach(function (image) {
+    image.addEventListener('dragstart', function (e) {
+        // Set the image source as drag data
+        e.dataTransfer.setData('text/plain', e.target.src);
+        // Set custom data attribute to mark the source container
+        if (image.classList.contains('obstacle-image')) {
+            e.dataTransfer.setData('sourceContainer', 'obstacle-image');
+        } else if (image.classList.contains('obstacleElement-image')) {
+            e.dataTransfer.setData('sourceContainer', 'obstacleElement-image');
+        }
     });
 });
 
@@ -44,162 +74,328 @@ document.querySelectorAll('.obstacle-image').forEach(function(image) {
 stage.container().addEventListener('dragover', function(e) {
     e.preventDefault();
 });
-
 // Handle dropping inside the container
 stage.container().addEventListener('drop', function(e) {
     e.preventDefault();
-
     // Get the dropped image source from drag data
-    var itemURL = e.dataTransfer.getData('text/plain');
+    let itemURL = e.dataTransfer.getData('text/plain');
 
     // We find pointer position by registering it manually
     stage.setPointersPositions(e);
-    var pointerPos = stage.getPointerPosition();
+    let position = stage.getPointerPosition();
+    let positionScaled = {
+        x: position.x / stage.scaleX(),
+        y: position.y / stage.scaleY()
+    };
 
-    // Create Konva image from dropped URL
-    Konva.Image.fromURL(itemURL, function(image) {
-        // Set height to 40px and maintain aspect ratio
-        var aspectRatio = image.image().height / image.image().width;
-        var newWidth = 40 / aspectRatio;
-        image.width(newWidth);
-        image.height(40);
+    let sourceContainer = e.dataTransfer.getData('sourceContainer');
+    let isElement = false;
+    if (sourceContainer === 'obstacleElement-image') {
+        isElement = true;
+    }
+    createSign(isElement, itemURL, positionScaled, 0);
+});
 
-        // Set position and make draggable
-        image.position(pointerPos);
+// ---- CREATE Sign ----
+function createSign(isElement, itemURL, position, rotation) {
+    let signId;
+    if (!isElement) {
+        let filename = itemURL.substring(itemURL.lastIndexOf("/") + 1);
+        signId = filename.match(/\d+/)[0];
+
+        // Check if there's already a sign at the dropped position
+        var existingSign = signs.find(function (sign) {
+            var signX = sign.x() - sign.width() / 2;
+            var signY = sign.y() - sign.height() / 2;
+            var signWidth = sign.width();
+            var signHeight = sign.height();
+
+            return position.x >= signX && position.x <= signX + signWidth &&
+                position.y >= signY && position.y <= signY + signHeight;
+        });
+
+        if (existingSign) {
+            var img = new Image();
+            img.onload = function () {
+                existingSign.image(img);
+                existingSign.id(signId);
+                setSignBorderStroke(existingSign);
+                updateSignSequenceTable(existingSign);
+            };
+            img.src = itemURL;
+            return;
+        }
+    }
+    Konva.Image.fromURL(itemURL, function (image) {
+        image.width(sceneWidth / 10);
+        image.height(sceneHeight / 10);
+        image.offsetX(image.width() / 2);
+        image.offsetY(image.height() / 2);
+        image.cornerRadius(10);
+        image.dragBoundFunc(function (pos) {
+            var newX = Math.max(stage.x() + image.width() / 4, Math.min(stage.x() + stage.width() - image.width() / 4, pos.x));
+            var newY = Math.max(stage.y() + image.height() / 4, Math.min(stage.y() + stage.height() - image.height() / 4, pos.y));
+            return {
+                x: newX,
+                y: newY
+            }
+        });
+        image.position(position);
+        image.rotation(rotation);
         image.draggable(true);
 
-        // Add image to layer
-        imageLayer.add(image);
+        if (isElement) {
+            image.name("Element");
+            elements.push(image);
+        } else {
+            image.id(signId);
+            setSignBorderStroke(image);
+            image.strokeWidth(image.width() / 15);
+            image.name("Sign");
+            signs.push(image);
+            updateArrows();
+            updateSignSequenceTable();
+        }
+        signLayer.add(image);
 
         // Attach Transformer to the image with rotation only
-        var tr = new Konva.Transformer({
-            enabledAnchors: ['rotate'], // Enable only the rotate anchor
-            rotateAnchorOffset: 40, // Set rotation handle position
+        var transformer = new Konva.Transformer({
+            centeredScaling: true,
+            rotationSnaps: [0, 90, 180, 270],
+            resizeEnabled: false
         });
-        imageLayer.add(tr);
-        tr.nodes([image]);
 
-        // Update text on drop
-        updateText(pointerPos, image);
-
-        // Batch draw to update the stage
-        imageLayer.batchDraw();
+        signLayer.add(transformer);
+        transformer.nodes([image]);
 
         // Event listener to show/hide Transformer when image is clicked
-        image.on('click', function(evt) {
-            var isSelected = tr.nodes().includes(image);
-            tr.nodes(isSelected ? [] : [image]); // Toggle selection
-            imageLayer.batchDraw();
+        image.on('click', function (evt) {
+            var isSelected = transformer.nodes().includes(image);
+            transformer.nodes(isSelected ? [] : [image]); // Toggle selection
+            signLayer.batchDraw();
             evt.cancelBubble = true;
         });
 
         // Event listener to clear selection when clicking away from the selected image or stage
-        stage.on('click', function(evt) {
+        stage.on('click', function (evt) {
             // Check if the clicked target is not the image or stage
             if (evt.target === stage || !image.isAncestorOf(evt.target)) {
-                tr.nodes([]); // Clear selection for all images
-                imageLayer.batchDraw();
+                transformer.nodes([]); // Clear selection for all images
+                signLayer.batchDraw();
             }
         });
 
-        // Event listener to update text on drag
-        image.on('dragmove', function() {
-            updateText(image.position(), image);
-        });
-
-        // Event listener to update text on rotation
-        image.on('transform', function() {
-            updateText(image.position(), image);
-        });
-
         // Event listener to destroy the image on double tap
-        image.on('dblclick dbltap', function() {
-            tr.destroy();
-            this.destroy();
-            text.text('');
-            imageLayer.batchDraw();
+        image.on('dblclick dbltap', function () {
+            deleteSign(this);
         });
+        image.on('dragmove', function () {
+            updateArrows();
+            image.moveToTop();
+        });
+        // Batch draw to update the stage
+        signLayer.batchDraw();
     });
-});
+}
 
-// ARROW FUNCTIONALITY //
-var arrow;
-stage.on('dblclick dbltap', function() {
-    const stagePos = stage.getPointerPosition();
-    const containerPos = stage.container().getBoundingClientRect();
+function deleteSign(sign) {
+    getSignTransformer(sign).destroy();
+    let signPlace = signs.indexOf(sign);
+    if (signPlace !== -1) {
+        signs.splice(signPlace, 1); // Remove the image from the signs array
+        updateSignSequenceTable();
+    }
+    sign.destroy();
+    signLayer.batchDraw();
+}
 
-    // Calculate the offset between the stage position and the container position
-    const offsetX = stagePos.x - containerPos.left;
-    const offsetY = stagePos.y - containerPos.top;
+function getSignTransformer(sign) {
+    var transformer = signLayer.find('Transformer').filter(function (tr) {
+        return tr.nodes()[0] === sign;
+    })[0];
 
-    // Create the arrow at the stage position but set its logical position relative to the container
-    arrow = new Konva.Arrow({
-        pointerLength: 15,
-        pointerWidth: 12,
-        fill: 'black',
+    return transformer;
+}
+
+function setSignBorderStroke(sign) {
+    let id = sign.id();
+    if (id < 3) {
+        sign.stroke('black');
+    } else if (id >= 3 && id < 100) {
+        sign.stroke('green');
+    } else if (id >= 100 && id < 200) {
+        sign.stroke('blue');
+    } else if (id >= 200 && id < 300) {
+        sign.stroke('yellow');
+    } else if (id >= 300) {
+        sign.stroke('red');
+    }
+}
+
+// ---- ARROW FUNCTIONALITY ----
+function createArrow(startSign, endSign) {
+    var startPos = startSign.position();
+    var endPos = endSign.position();
+
+    var arrow = new Konva.Arrow({       
+        points: getArrowPoints(startPos, endPos),
+        pointerLength: 10,
+        pointerWidth: 10,
+        fill: 'white',
         stroke: 'black',
-        strokeWidth: 3,
-        draggable: true,
-        x: stagePos.x,
-        y: stagePos.y,
-        points: [0, 0, 60, 0], // Set points relative to arrow's logical position // [pos.x, pos.y, pos.x + 60, pos.y]
+        strokeWidth: 5,
+        fillAfterStrokeEnabled: true,
+        hitStrokeWidth: 50
     });
-    var tr = new Konva.Transformer({
-        enabledAnchors: ['rotate'], // Enable only the rotate anchor
-        rotateAnchorOffset: 40, // Set rotation handle position
-    });
-    imageLayer.add(tr);
-    tr.nodes([arrow]);
+    arrows.push(arrow);
+    arrowLayer.add(arrow);
+    arrowLayer.batchDraw();
+}
 
-    updateText(arrow.position(), arrow);
+function getArrowPoints(from, to) {
+    let dx = to.x - from.x;
+    let dy = to.y - from.y;
+    let angle = Math.atan2(-dy, dx);
 
-    // Event listener to show/hide Transformer when arrow is clicked
-    arrow.on('click', function(evt) {
-        var isSelected = tr.nodes().includes(arrow);
-        tr.nodes(isSelected ? [] : [arrow]); // Toggle selection
-        imageLayer.batchDraw();
+    let radius = 120;
 
-        evt.cancelBubble = true;
-    });
-
-    // Event listener to clear selection when clicking away from the selected arrow or stage
-    stage.on('click', function(evt) {
-        // Check if the clicked target is not the arrow or stage
-        if (evt.target === stage || !arrow.isAncestorOf(evt.target)) {
-            tr.nodes([]); // Clear selection for all arrows
-            imageLayer.batchDraw();
-        }
-    });
-
-    // Event listener to update text on drag
-    arrow.on('dragmove', function() {
-        updateText(arrow.position(), arrow);
-    });
-
-    // Event listener to update text on rotation
-    arrow.on('transform', function() {
-        updateText(arrow.position(), arrow);
-    });
-
-    // Event listener to destroy the arrow on double tap
-    arrow.on('dblclick dbltap', function() {
-        tr.destroy();
-        this.destroy();
-        text.text('');
-        imageLayer.batchDraw();
-    });
-
-    imageLayer.add(arrow);
-    imageLayer.batchDraw();
-});
-
-// Function to update text
-function updateText(position, obj) {
-    var lines = [
-        'x: ' + position.x.toFixed(2),
-        'y: ' + position.y.toFixed(2),
-        'rotation: ' + obj.rotation().toFixed(2),
+    return [
+        from.x + -radius * Math.cos(angle + Math.PI),
+        from.y + radius * Math.sin(angle + Math.PI),
+        to.x + -radius * Math.cos(angle),
+        to.y + radius * Math.sin(angle),
     ];
-    text.text(lines.join('\n'));
-    imageLayer.batchDraw();
+}
+function updateArrows() {
+    for (var i = 0; i < arrows.length; i++) {
+        arrows[i].destroy();
+    }
+    for (var i = 0; i < signs.length - 1; i++) {
+        var startSign = signs[i];
+        var endSign = signs[i + 1];
+        createArrow(startSign, endSign);
+    }
+}
+
+// ---- SEQUENCE TABLE ----
+function updateSignSequenceTable() {
+    var table = document.getElementById("sign-sequence").getElementsByTagName('table')[0];
+    table.innerHTML = "";
+    var row = table.insertRow(0); // Insert a single row
+    for (var i = 0; i < signs.length; i++) {        
+        let signId = signs[i].id();
+        if (signId > 2) {
+            var cell = row.insertCell(row.cells.length); // Insert cells horizontally
+            cell.innerHTML = " " + (row.cells.length) + ": Skilt: " + signId + " ";
+        }       
+    }
+    updateArrows();
+}
+
+function clearSequenceTable() {
+    var table = document.getElementById("sign-sequence").getElementsByTagName('table')[0];
+    table.innerHTML = "";
+}
+
+// ---- CLEAR ----
+function clearStage() {
+    signs = [];
+    elements = [];
+    var children = signLayer.children;
+    for (var i = children.length - 1; i >= 0; i--) {
+        var child = children[i];
+        if (child.name() === 'Element' || child.name() === 'Sign' || child.getClassName() == 'Transformer') {
+            child.destroy();
+        }
+    }
+    clearSequenceTable();
+    updateArrows();
+}
+
+// ---- SAVE ----
+function saveToJSON() {
+    var konvaData = [];
+    var trackName = document.getElementById('track-name').value;
+    konvaData.push(trackName);
+    var category = document.getElementById('category-selector').value;
+    konvaData.push(category);
+
+    var children = signLayer.children;
+    for (var i = 0; i < children.length; i++) {
+        var shape = children[i];
+        if (shape.name() === 'Sign') {
+            var data = {
+                id: shape.id(),
+                name: shape.name(),
+                height: shape.height(),
+                rotation: shape.rotation(),
+                stroke: shape.stroke(),
+                strokeWidth: shape.strokeWidth(),
+                offsetX: shape.offsetX(),
+                offsetY: shape.offsetY(),
+                x: shape.x(),
+                y: shape.y(),
+                src: shape.attrs.image.src,
+                draggable: 'true',
+            };
+            konvaData.push(data);
+        } else if (shape.name() === 'Element') {            
+            var data = {
+                name: shape.name(),
+                height: shape.height(),
+                rotation: shape.rotation(),
+                offsetX: shape.offsetX(),
+                offsetY: shape.offsetY(),
+                x: shape.x(),
+                y: shape.y(),
+                src: shape.attrs.image.src,
+                draggable: 'true',
+            };
+            konvaData.push(data);
+        }
+    }
+
+    var jsonData = JSON.stringify(konvaData, null, 2);
+
+    var blob = new Blob([jsonData], { type: "application/json" });
+
+    var a = document.createElement('a');
+    a.download = 'konva_data.json';
+    a.href = window.URL.createObjectURL(blob);
+    a.click();
+}
+
+// ---- LOAD ----
+function loadFromJSON(jsonData) {
+    clearStage();
+    var jsonArray = JSON.parse(jsonData);    
+
+    var trackName = jsonArray[0];
+    document.getElementById('track-name').value = trackName;
+    var trackName = jsonArray[1];
+    document.getElementById('category-selector').value = trackName;
+    jsonArray.splice(0, 2);
+
+    jsonArray.forEach(obj => {
+        let itemURL = obj.src;
+        let position = {
+            x: obj.x,
+            y: obj.y
+        };
+        let rotation = obj.rotation;
+        let isElement = false;
+        if (obj.name === 'Element') {
+            isElement = true;
+        }
+        createSign(isElement, itemURL, position, rotation);
+    });
+}
+function handleFileInputChange(event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function (event) {
+        var jsonData = event.target.result;
+        loadFromJSON(jsonData);
+    };
+    reader.readAsText(file);
 }

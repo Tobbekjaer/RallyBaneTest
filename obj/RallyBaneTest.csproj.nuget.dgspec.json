@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/tobiaskjaer/Repoes/RallyBaneTest/RallyBaneTest.csproj": {}
+    "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\RallyBaneTest.csproj": {}
   },
   "projects": {
-    "/Users/tobiaskjaer/Repoes/RallyBaneTest/RallyBaneTest.csproj": {
+    "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\RallyBaneTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/tobiaskjaer/Repoes/RallyBaneTest/RallyBaneTest.csproj",
+        "projectUniqueName": "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\RallyBaneTest.csproj",
         "projectName": "RallyBaneTest",
-        "projectPath": "/Users/tobiaskjaer/Repoes/RallyBaneTest/RallyBaneTest.csproj",
-        "packagesPath": "/Users/tobiaskjaer/.nuget/packages/",
-        "outputPath": "/Users/tobiaskjaer/Repoes/RallyBaneTest/obj/",
+        "projectPath": "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\RallyBaneTest.csproj",
+        "packagesPath": "C:\\Users\\Minik\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Minik\\Source\\Repos\\DcHRally\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/tobiaskjaer/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Minik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -32,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -73,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

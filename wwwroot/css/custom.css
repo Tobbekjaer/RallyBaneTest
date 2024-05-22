@@ -1,0 +1,47 @@
+/* custom.css */
+
+/* Navbar styles */
+.navbar-custom {
+    background-color: #0a5494;
+    padding: 0 5px; /* Adjust vertical padding */
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #fdf5e6;
+    font-weight: bold;
+    margin: 0 15px; /* Adjust horizontal margin */
+}
+
+.navbar-custom .nav-link:hover {
+    color: #add8e6;
+}
+
+/* Body styles */
+body {
+    background-color: #fdf5e6;
+    color: #000;
+    font-weight: normal;
+}
+
+/* Logo styles */
+.navbar-custom .navbar-brand .navbar-logo {
+    max-width: 35%; /* Adjust the size as needed */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.navbar-custom .navbar-title {
+    color: #fdf5e6;
+    font-size: x-small;
+    text-align: center;
+    display: block;
+}
+
+/* Separator styles */
+.navbar-separator {
+    border-right: 1px solid #add8e6; /* Light blue */
+    height: 40px; /* Adjust the height of the separator */
+    margin: 0 10px; /* Adjust the margin around the separator */
+}

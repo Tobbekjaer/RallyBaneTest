@@ -21,6 +21,23 @@ namespace RallyBaneTest.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("DcHRally.Models.ObstacleElement", b =>
+                {
+                    b.Property<int>("ObstacleElementId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ObstacleElementId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ObstacleElementId");
+
+                    b.ToTable("ObstacleElements");
+                });
+
             modelBuilder.Entity("RallyBaneTest.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")

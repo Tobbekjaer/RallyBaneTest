@@ -17,7 +17,7 @@ document.querySelectorAll('.obstacle-image').forEach(function(image) {
     
     image.addEventListener('mouseenter', function(e) {
         const obstacleName = image.getAttribute('alt');
-        console.log('Obstacle Name:', obstacleName); // Log the obstacle name to the console
+        /*console.log('Obstacle Name:', obstacleName);*/
         timeout = setTimeout(function() {
             showTooltip(e.clientX, e.clientY, obstacleName);
         }, 1000); // Adjust the delay as needed
@@ -44,3 +44,4 @@ function hideTooltip() {
         tooltip.remove();
     }
 }
+

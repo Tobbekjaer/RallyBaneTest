@@ -5,6 +5,9 @@
     ViewData["Title"] = "Track Builder";
     Layout = "_Layout";
 }
+<head>
+    <link rel="stylesheet" href="~/css/trackStyle.css">
+</head>
 <div class="row">
     <!-- Left Section: List of obstacles/signs -->
     <div class="col-md-4">
@@ -17,7 +20,7 @@
                 foreach (var obstacle in categoryOneObstacles)
                 {
                     <div class="obstacle-container text-center mx-2">
-                        <img src="~/images/signs/@(obstacle.ObstacleId).png" alt="@obstacle.Name" draggable="true" class="obstacle-image" />
+                        <img src="~/images/signs/@(obstacle.ObstacleId).png" title="@($"{obstacle.Name}\n{obstacle.Description}")" draggable="true" class="obstacle-image" />
                         <div class="obstacle-name">@obstacle.Name</div>
                     </div>
                 }
@@ -37,110 +40,80 @@
                                 @foreach (var obstacle in group)
                                 {
                                     <div class="obstacle-container text-center mx-2">
-                                        <img src="~/images/signs/@(obstacle.ObstacleId).png" alt="@obstacle.Name" draggable="true" class="obstacle-image" />
+                                        <span class="obstacle-id">@obstacle.ObstacleId</span>
+                                        <img src="~/images/signs/@(obstacle.ObstacleId).png" title="@($"{obstacle.Name}\n{obstacle.Description}")" draggable="true" class="obstacle-image" />
                                     </div>
                                 }
                             </div>
                         </div>
                     </div>
                 }
+                var obstacleElements = Model.ObstacleElements;
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseObstacleElements" aria-expanded="false" aria-controls="collapseObstacleElements">
+                            Bane Elementer
+                        </button>
+                    </h2>
+                    <div id="collapseObstacleElements" class="accordion-collapse collapse" aria-labelledby="Bane Elementer">
+                        <div class="accordion-body obstacle-accordion-body">
+                            @foreach (var obstacleElement in obstacleElements)
+                            {                  
+                                <div class="obstacle-container text-center mx-2">
+                                    <div class="obstacle-name">@obstacleElement.Name</div>
+                                    <img src="~/images/obstacleElements/@(obstacleElement.Name).png" title="@(obstacleElement.Name)" draggable="true" class="obstacleElement-image" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
             }
         </div>
     </div>
 
     <!-- Center Section: Track builder -->
     <div class="col-md-7">
-        <h2>Banebyggeren</h2>
-        <div id="container"></div>
+        <h2 style="display: inline-block;">Banebyggeren</h2>
+
+        <div class="input-container">            
+            <input type="text" class="text-field" id="track-name" placeholder="Angiv evt. banenavn" style="display: inline-block; float: right;" />
+            <label for="category-selector">Vælg kategori:</label>
+            <select id="category-selector">
+                @if (Model != null && Model.Obstacles != null)
+                {
+                    var categories = Model.Obstacles.Where(o => o.Category.CategoryId != 1).GroupBy(o => o.Category);
+                    foreach (var category in categories)
+                    {
+                        <option value="@category.Key.Name">@category.Key.Name</option>                      
+                    }
+                }
+             </select>
+         </div>
+
+        <div id="trackContainer"></div>
+        <h6>Rækkefølge:</h6>
+        <div class="table" id="sign-sequence">
+            <table>                
+            </table>
+        </div>
     </div>
 
     <!-- Right Section: Buttons -->
     <div class="col-md-1">
         <h2>Info</h2>
         <button class="right-section-button" id="display-regulations">Reglement</button>
-        <button class="right-section-button" id="save-track">Gem Bane</button>
-        <button class="right-section-button" id="search-import-tracks">Hent bane</button>
+        <button class="right-section-button" id="clear-track" onclick="clearStage()">Ryd Bane</button>
+        <button class="right-section-button" id="save-track" onclick="saveToJSON()" >Gem Bane</button>
+        <label for="fileInput" class="custom-file-upload">
+            <span>Hent bane fra fil:</span>
+            <button type="button" onclick="document.getElementById('fileInput').click()">Choose File</button>
+            <input type="file" id="fileInput" onchange="handleFileInputChange(event)" style="display: none;">
+        </label>
     </div>
 </div>
 
 @section scripts {
-    <!-- Scripts for Konva.js and other JavaScript functionality -->
     <script src="https://unpkg.com/konva@9.3.6/konva.min.js"></script>
     <script src="~/js/track.js"></script>
     <script src="~/js/obstacle.js"></script>
-
-    <style>
-        .obstacle-container {
-            display: inline-block;
-            width: 75px;
-            height: 75px;
-            margin-right: 2px;
-            position: relative;
-        }
-
-        .obstacle-image {
-            width: 100%;
-            height: auto;
-        }
-
-        .right-section-button {
-            display: block;
-            width: 100%;
-            margin-bottom: 2px;
-            border: none;
-            border-radius: 2px;
-            background-color: #007bff;
-            color: #fff;
-            font-size: 14px;
-            text-align: center;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .right-section-button:hover {
-            background-color: #0056b3;
-        }
-
-        .accordion-button {
-            cursor: pointer;
-            padding: 4px 8px;
-            margin-bottom: 2px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 2px;
-            font-size: 14px;
-            text-align: center;
-        }
-
-        .accordion-button:hover {
-            background-color: #e0e0e0;
-        }
-
-        .accordion-collapse {
-            padding: 4px;
-            margin-top: 2px;
-            border: 1px solid #ccc;
-            border-top: none;
-        }
-
-        .accordion-body {
-            padding: 4px;
-        }
-
-        .obstacle-accordion-body {
-            max-height: 300px; 
-            overflow-y: auto; 
-        }
-
-        .obstacle-tooltip {
-            position: fixed;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            z-index: 9999; 
-            pointer-events: none; 
-        }
-    </style>
 }
