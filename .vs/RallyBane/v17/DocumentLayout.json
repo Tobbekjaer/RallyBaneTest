@@ -6,6 +6,9 @@
       "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\trackcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\homecontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{06DC0B9B-21E6-4FDF-9C3A-7E473CC2A000}|DcHRally.csproj|c:\\users\\sebastian\\source\\repos\\dchrally\\models\\obstacleelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06DC0B9B-21E6-4FDF-9C3A-7E473CC2A000}|DcHRally.csproj|solutionrelative:models\\obstacleelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -52,9 +55,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{06DC0B9B-21E6-4FDF-9C3A-7E473CC2A000}|DcHRally.csproj|c:\\users\\sebastian\\source\\repos\\dchrally\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06DC0B9B-21E6-4FDF-9C3A-7E473CC2A000}|DcHRally.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\homecontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -80,16 +80,16 @@
               "Title": "TrackControllerTest.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TrackControllerTest.cs",
               "RelativeDocumentMoniker": "..\\DcHRally.Test\\TrackControllerTest.cs",
-              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TrackControllerTest.cs*",
-              "RelativeToolTip": "..\\DcHRally.Test\\TrackControllerTest.cs*",
-              "ViewState": "AQIAAHYAAADAZWZmZmYnwIwAAAAAAAAA",
+              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TrackControllerTest.cs",
+              "RelativeToolTip": "..\\DcHRally.Test\\TrackControllerTest.cs",
+              "ViewState": "AQIAAHoAAAAA3MzMzMzkv5QAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-21T06:57:54.688Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "3.txt",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\wwwroot\\images\\text\\3.txt",
               "RelativeDocumentMoniker": "wwwroot\\images\\text\\3.txt",
@@ -102,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ObstacleElement.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\ObstacleElement.cs",
               "RelativeDocumentMoniker": "Models\\ObstacleElement.cs",
@@ -115,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Obstacle.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\Obstacle.cs",
               "RelativeDocumentMoniker": "Models\\Obstacle.cs",
@@ -128,7 +128,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Category.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\Category.cs",
               "RelativeDocumentMoniker": "Models\\Category.cs",
@@ -141,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "IObstacleRepository.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\IObstacleRepository.cs",
               "RelativeDocumentMoniker": "Models\\IObstacleRepository.cs",
@@ -154,7 +154,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "IObstacleElementRepository.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\IObstacleElementRepository.cs",
               "RelativeDocumentMoniker": "Models\\IObstacleElementRepository.cs",
@@ -167,7 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ICategoryRepository.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\ICategoryRepository.cs",
               "RelativeDocumentMoniker": "Models\\ICategoryRepository.cs",
@@ -180,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "DbSeeder.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\DbSeeder.cs",
               "RelativeDocumentMoniker": "Models\\DbSeeder.cs",
@@ -193,7 +193,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "RallyDbContext.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\RallyDbContext.cs",
               "RelativeDocumentMoniker": "Models\\RallyDbContext.cs",
@@ -206,7 +206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -219,20 +219,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 1,
               "Title": "HomeControllerTest.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\HomeControllerTest.cs",
               "RelativeDocumentMoniker": "..\\DcHRally.Test\\HomeControllerTest.cs",
               "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\HomeControllerTest.cs",
               "RelativeToolTip": "..\\DcHRally.Test\\HomeControllerTest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAACsAAAAANDMzM/MlwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-21T09:03:32.972Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "TrackController.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Controllers\\TrackController.cs",
               "RelativeDocumentMoniker": "Controllers\\TrackController.cs",
@@ -245,7 +245,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
