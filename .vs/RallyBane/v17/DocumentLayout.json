@@ -3,7 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\trackcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\trackintegrationtest\\categoryrepositoryintegrationtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\identitytest\\homecontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\trackintegrationtest\\obstacleelementrepositoryintegrationtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\trackintegrationtest\\obstaclerepositoryintegrationtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\trackintegrationtest\\trackcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\testdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{06DC0B9B-21E6-4FDF-9C3A-7E473CC2A000}|DcHRally.csproj|c:\\users\\sebastian\\source\\repos\\dchrally\\controllers\\trackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -12,18 +27,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{06DC0B9B-21E6-4FDF-9C3A-7E473CC2A000}|DcHRally.csproj|c:\\users\\sebastian\\source\\repos\\dchrally\\wwwroot\\js\\track.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{06DC0B9B-21E6-4FDF-9C3A-7E473CC2A000}|DcHRally.csproj|solutionrelative:wwwroot\\js\\track.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\obstacleelementrepositoryintegrationtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\categoryrepositoryintegrationtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\testdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\obstaclerepositoryintegrationtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{06DC0B9B-21E6-4FDF-9C3A-7E473CC2A000}|DcHRally.csproj|c:\\users\\sebastian\\source\\repos\\dchrally\\models\\obstaclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -78,9 +81,6 @@
       "RelativeMoniker": "D:0:0:{06DC0B9B-21E6-4FDF-9C3A-7E473CC2A000}|DcHRally.csproj|solutionrelative:models\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCDEE046-6A34-4331-88BD-90F43FE80CAB}|..\\DcHRally.Test\\DcHRally.Test.csproj|c:\\users\\sebastian\\source\\repos\\dchrally.test\\homecontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{06DC0B9B-21E6-4FDF-9C3A-7E473CC2A000}|DcHRally.csproj|c:\\users\\sebastian\\source\\repos\\dchrally\\wwwroot\\images\\text\\3.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{06DC0B9B-21E6-4FDF-9C3A-7E473CC2A000}|DcHRally.csproj|solutionrelative:wwwroot\\images\\text\\3.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
@@ -96,7 +96,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -108,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "track.js",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\wwwroot\\js\\track.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\track.js",
@@ -116,31 +116,30 @@
               "RelativeToolTip": "wwwroot\\js\\track.js",
               "ViewState": "AQIAABwBAAAAWGZmZuYhwFAAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-05-26T08:38:03.324Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-26T08:38:03.324Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "ObstacleElementRepositoryIntegrationTest.cs",
-              "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\ObstacleElementRepositoryIntegrationTest.cs",
-              "RelativeDocumentMoniker": "..\\DcHRally.Test\\ObstacleElementRepositoryIntegrationTest.cs",
-              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\ObstacleElementRepositoryIntegrationTest.cs",
-              "RelativeToolTip": "..\\DcHRally.Test\\ObstacleElementRepositoryIntegrationTest.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAgwCYAAAAJAAAA",
+              "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TrackIntegrationTest\\ObstacleElementRepositoryIntegrationTest.cs",
+              "RelativeDocumentMoniker": "..\\DcHRally.Test\\TrackIntegrationTest\\ObstacleElementRepositoryIntegrationTest.cs",
+              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TrackIntegrationTest\\ObstacleElementRepositoryIntegrationTest.cs",
+              "RelativeToolTip": "..\\DcHRally.Test\\TrackIntegrationTest\\ObstacleElementRepositoryIntegrationTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADcAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-24T11:48:09.091Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "ObstacleRepositoryIntegrationTest.cs",
-              "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\ObstacleRepositoryIntegrationTest.cs",
-              "RelativeDocumentMoniker": "..\\DcHRally.Test\\ObstacleRepositoryIntegrationTest.cs",
-              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\ObstacleRepositoryIntegrationTest.cs",
-              "RelativeToolTip": "..\\DcHRally.Test\\ObstacleRepositoryIntegrationTest.cs",
-              "ViewState": "AQIAACYAAAAgAAAAAEAwwEcAAAAAAAAA",
+              "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TrackIntegrationTest\\ObstacleRepositoryIntegrationTest.cs",
+              "RelativeDocumentMoniker": "..\\DcHRally.Test\\TrackIntegrationTest\\ObstacleRepositoryIntegrationTest.cs",
+              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TrackIntegrationTest\\ObstacleRepositoryIntegrationTest.cs",
+              "RelativeToolTip": "..\\DcHRally.Test\\TrackIntegrationTest\\ObstacleRepositoryIntegrationTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-24T11:45:51.517Z",
               "EditorCaption": ""
@@ -153,27 +152,27 @@
               "RelativeDocumentMoniker": "..\\DcHRally.Test\\TestData.cs",
               "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TestData.cs",
               "RelativeToolTip": "..\\DcHRally.Test\\TestData.cs",
-              "ViewState": "AQIAADYAAACgmpmZmdktwBcAAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-24T11:44:09.925Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "CategoryRepositoryIntegrationTest.cs",
-              "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\CategoryRepositoryIntegrationTest.cs",
-              "RelativeDocumentMoniker": "..\\DcHRally.Test\\CategoryRepositoryIntegrationTest.cs",
-              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\CategoryRepositoryIntegrationTest.cs",
-              "RelativeToolTip": "..\\DcHRally.Test\\CategoryRepositoryIntegrationTest.cs",
-              "ViewState": "AQIAAA0AAACANDMzM7MRwCkAAABPAAAA",
+              "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TrackIntegrationTest\\CategoryRepositoryIntegrationTest.cs",
+              "RelativeDocumentMoniker": "..\\DcHRally.Test\\TrackIntegrationTest\\CategoryRepositoryIntegrationTest.cs",
+              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TrackIntegrationTest\\CategoryRepositoryIntegrationTest.cs",
+              "RelativeToolTip": "..\\DcHRally.Test\\TrackIntegrationTest\\CategoryRepositoryIntegrationTest.cs",
+              "ViewState": "AQIAAA0AAAAAMzMzM7MqwC0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-24T11:21:48.031Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
@@ -181,12 +180,11 @@
               "RelativeToolTip": "Models\\ErrorViewModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T10:51:05.198Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-24T10:51:05.198Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "DbSeeder.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\DbSeeder.cs",
               "RelativeDocumentMoniker": "Models\\DbSeeder.cs",
@@ -194,12 +192,11 @@
               "RelativeToolTip": "Models\\DbSeeder.cs",
               "ViewState": "AQIAAEQAAAAA/P////8OwFUAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T10:51:03.393Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-24T10:51:03.393Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "CategoryRepository.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\CategoryRepository.cs",
               "RelativeDocumentMoniker": "Models\\CategoryRepository.cs",
@@ -207,12 +204,11 @@
               "RelativeToolTip": "Models\\CategoryRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T10:51:01.872Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-24T10:51:01.872Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ObstacleRepository.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\ObstacleRepository.cs",
               "RelativeDocumentMoniker": "Models\\ObstacleRepository.cs",
@@ -220,12 +216,11 @@
               "RelativeToolTip": "Models\\ObstacleRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T10:50:55.451Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-24T10:50:55.451Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "ObstacleElementRepository.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\ObstacleElementRepository.cs",
               "RelativeDocumentMoniker": "Models\\ObstacleElementRepository.cs",
@@ -233,18 +228,17 @@
               "RelativeToolTip": "Models\\ObstacleElementRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T10:50:53.956Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-24T10:50:53.956Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "TrackControllerTest.cs",
-              "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TrackControllerTest.cs",
-              "RelativeDocumentMoniker": "..\\DcHRally.Test\\TrackControllerTest.cs",
-              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TrackControllerTest.cs",
-              "RelativeToolTip": "..\\DcHRally.Test\\TrackControllerTest.cs",
-              "ViewState": "AQIAADsAAAAACgAAAAAAwFcAAAAAAAAA",
+              "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TrackIntegrationTest\\TrackControllerTest.cs",
+              "RelativeDocumentMoniker": "..\\DcHRally.Test\\TrackIntegrationTest\\TrackControllerTest.cs",
+              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\TrackIntegrationTest\\TrackControllerTest.cs",
+              "RelativeToolTip": "..\\DcHRally.Test\\TrackIntegrationTest\\TrackControllerTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-21T06:57:54.688Z",
               "EditorCaption": ""
@@ -259,12 +253,11 @@
               "RelativeToolTip": "wwwroot\\images\\text\\3.txt",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAC3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-05-21T13:22:06.773Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T13:22:06.773Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ObstacleElement.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\ObstacleElement.cs",
               "RelativeDocumentMoniker": "Models\\ObstacleElement.cs",
@@ -272,12 +265,11 @@
               "RelativeToolTip": "Models\\ObstacleElement.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T13:06:56.658Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T13:06:56.658Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Obstacle.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\Obstacle.cs",
               "RelativeDocumentMoniker": "Models\\Obstacle.cs",
@@ -285,12 +277,11 @@
               "RelativeToolTip": "Models\\Obstacle.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T13:06:52.855Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T13:06:52.855Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Category.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\Category.cs",
               "RelativeDocumentMoniker": "Models\\Category.cs",
@@ -298,12 +289,11 @@
               "RelativeToolTip": "Models\\Category.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T13:06:47.649Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T13:06:47.649Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "IObstacleRepository.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\IObstacleRepository.cs",
               "RelativeDocumentMoniker": "Models\\IObstacleRepository.cs",
@@ -311,12 +301,11 @@
               "RelativeToolTip": "Models\\IObstacleRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T11:49:42.921Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T11:49:42.921Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "IObstacleElementRepository.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\IObstacleElementRepository.cs",
               "RelativeDocumentMoniker": "Models\\IObstacleElementRepository.cs",
@@ -324,12 +313,11 @@
               "RelativeToolTip": "Models\\IObstacleElementRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T11:49:40.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T11:49:40.004Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "ICategoryRepository.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\ICategoryRepository.cs",
               "RelativeDocumentMoniker": "Models\\ICategoryRepository.cs",
@@ -337,12 +325,11 @@
               "RelativeToolTip": "Models\\ICategoryRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T11:49:29.002Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T11:49:29.002Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "RallyDbContext.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Models\\RallyDbContext.cs",
               "RelativeDocumentMoniker": "Models\\RallyDbContext.cs",
@@ -350,8 +337,7 @@
               "RelativeToolTip": "Models\\RallyDbContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T11:31:11.146Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T11:31:11.146Z"
             },
             {
               "$type": "Document",
@@ -363,25 +349,24 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T09:20:47.457Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T09:20:47.457Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 1,
               "Title": "HomeControllerTest.cs",
-              "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\HomeControllerTest.cs",
-              "RelativeDocumentMoniker": "..\\DcHRally.Test\\HomeControllerTest.cs",
-              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\HomeControllerTest.cs",
-              "RelativeToolTip": "..\\DcHRally.Test\\HomeControllerTest.cs",
-              "ViewState": "AQIAACsAAAAANDMzM/MlwAAAAAAAAAAA",
+              "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\IdentityTest\\HomeControllerTest.cs",
+              "RelativeDocumentMoniker": "..\\DcHRally.Test\\IdentityTest\\HomeControllerTest.cs",
+              "ToolTip": "C:\\Users\\sebastian\\source\\repos\\DcHRally.Test\\IdentityTest\\HomeControllerTest.cs",
+              "RelativeToolTip": "..\\DcHRally.Test\\IdentityTest\\HomeControllerTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-21T09:03:32.972Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "TrackController.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Controllers\\TrackController.cs",
               "RelativeDocumentMoniker": "Controllers\\TrackController.cs",
@@ -389,12 +374,11 @@
               "RelativeToolTip": "Controllers\\TrackController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-20T12:59:31.504Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T12:59:31.504Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\sebastian\\source\\repos\\DcHRally\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
@@ -402,8 +386,7 @@
               "RelativeToolTip": "Controllers\\HomeController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-20T12:59:01.303Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T12:59:01.303Z"
             }
           ]
         }
